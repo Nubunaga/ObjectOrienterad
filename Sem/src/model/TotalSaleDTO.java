@@ -1,10 +1,10 @@
 package model;
 
 public class TotalSaleDTO {
-    SaleDTO sale;
-    float totalCost;
-    CashPayment cashPayment;
-    public TotalSaleDTO(SaleDTO sale, float totalCost,CashPayment payment){
+   private SaleDTO sale;
+   private float totalCost;
+  private  CashPayment cashPayment;
+  TotalSaleDTO(SaleDTO sale, float totalCost,CashPayment payment){
         this.sale = sale;
         this.totalCost = totalCost;
         this.cashPayment = payment;
@@ -23,7 +23,6 @@ public class TotalSaleDTO {
     }
 
     public String toString() {
-        String s = "["+this.sale +" "+this.totalCost+" "+this.cashPayment+"}";
-        return s;
+        return "["+this.sale +" "+this.cashPayment+"}";
     }
 }

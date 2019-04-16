@@ -16,6 +16,10 @@ public class Reciept {
         this.change = change;
     }
     public String toString(){
-        return ""+this.change;
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Total cost: %.2f",this.totalSale.getTotalCost()));
+        sb.append(String.format(" Payment: %.2f",this.totalSale.getCashPayment().getPayemtn()));
+        sb.append(String.format(" Change: %.2f",this.change*-1));
+        return sb.toString();
     }
 }

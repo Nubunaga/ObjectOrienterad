@@ -41,7 +41,6 @@ public class Sale {
         SaleDTO log = new SaleDTO(sale,calc.runningTotal(sale,1));
         float totalCost = calc.calculateTotalCost(log);
         TotalSaleDTO totalSale = new TotalSaleDTO(log,totalCost,pay);
-        System.out.println(""+totalSale);
         return totalSale;
     }
 }
