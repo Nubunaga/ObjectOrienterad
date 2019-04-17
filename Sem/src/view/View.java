@@ -44,13 +44,15 @@ public class View {
       }
       // enter the costumerId if there is allowed,
       System.out.println("Enter costumer id: ");
-      SaleDTO newSale =  contr.enterCostumerID(in.next());
-      System.out.println(""+ newSale);
+      SaleDTO newSale =  contr.enterCostumerID(in.next());    // send costumer id
+      System.out.println(""+ newSale);                        // Print new sale-value after discount
       payment = in.nextFloat();
-      Reciept change = contr.addPayment(payment);
+      Reciept change = contr.addPayment(payment);             // send payment
       clearScreen();
-      System.out.println(""+change);
+      System.out.println(""+change);                          // Print the reciept that will be recived.
     }
+
+    /*a static method that only task is to clear a cmd command screen so the user only sees the reciept.*/
   public static void clearScreen() {
     System.out.print("\033[H\033[2J");
     System.out.flush();

@@ -1,6 +1,5 @@
 package controller;
 
-import dbhandler.ExternalAccountingSystem;
 import dbhandler.Inventory;
 import dbhandler.ItemDTO;
 import model.*;

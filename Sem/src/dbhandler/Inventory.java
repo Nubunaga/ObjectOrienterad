@@ -1,11 +1,12 @@
 package dbhandler;
 
 import model.TotalSaleDTO;
+import test.InventoryDb;
 
 public class Inventory {
-
-    public Inventory(){
-
+        InventoryDb inv;
+    public Inventory(InventoryDb inv){
+        this.inv = inv;
     }
     public ItemDTO checkValidation (String itemID,int quantity){
         ItemDTO test = new ItemDTO(23.50f,"mjölk","3536", 0.12f,quantity);

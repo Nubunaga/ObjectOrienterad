@@ -1,6 +1,7 @@
 package dbhandler;
 
 import model.SaleDTO;
+import test.DiscountDb;
 
 import java.util.ArrayList;
 
