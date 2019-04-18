@@ -10,11 +10,16 @@ public class Calculator {
     }
 
     float runningTotal(ArrayList<ItemDTO> sale,float discount) {
-        float runningTotal = 0;
-        for (ItemDTO p : sale) {
-            runningTotal += ((p.getPrice()*p.getQuantity()) * (1 + p.getVatRate()));
-        }
+        try {
+            float runningTotal = 0;
+            for (ItemDTO p : sale) {
+                runningTotal += ((p.getPrice() * p.getQuantity()) * (1 + p.getVatRate()));
+            }
             return runningTotal;
+        }
+        catch (ArithmeticException e){
+            return 0;
+        }
     }
     float calculateTotalCost(SaleDTO sale){
         float totalCost = sale.getRunningTotal();

@@ -3,6 +3,8 @@ package view;
 import controller.Controller;
 import model.Reciept;
 import model.SaleDTO;
+import startUp.Main;
+
 import java.util.*;
 
 public class View {
@@ -27,6 +29,7 @@ public class View {
       String registerEnd = "End";
       String itemID;
       float payment;
+      int quantiy;
       float amount;
       // check for "End" signal to stop, else just add items.
         System.out.println("Enter itemId! End with signal *End* ");
@@ -34,7 +37,7 @@ public class View {
 
           // try to use the sale program, if null return catch nullPointException
          try {
-            SaleDTO saleInfo = contr.addItem(itemID, in.nextInt());
+            SaleDTO saleInfo = contr.addItem(itemID, quantiy = in.nextInt());
             System.out.println("" + saleInfo);
          }
          // catch the NullPointerException and print "no itemID valid".

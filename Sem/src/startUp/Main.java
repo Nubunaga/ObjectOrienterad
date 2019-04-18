@@ -16,15 +16,14 @@ import view.View;
 /************************************************/
 public class Main {
     public static void main(String[] args){
-        /*
-        *
-        * Classes for the test file be created here, These are made to test the different part of the program.
-        *
-        * */
-        //create all object needed and then run the "fakeSale" operation.
+        /*Classes for the test file be created here, These are made to test the different part of the program.*/
+
         new DiscountDb();
         InventoryDb db = new InventoryDb();
         db.database();
+        /******************************************************************************************************/
+
+        //create all object needed and then run the "fakeSale" operation.
         ExternalAccountingSystem exAccSys = new ExternalAccountingSystem();
         Inventory inv = new Inventory(db);
         Register reg = new Register(inv,exAccSys);
