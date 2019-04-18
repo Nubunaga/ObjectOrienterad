@@ -18,6 +18,8 @@ public class Reciept {
     }
     public String toString(){
         StringBuilder sb = new StringBuilder();
+        sb.append(String.format("Items:"+ newLine));
+        sb.append(String.format(""+this.totalSale.getSale().getItem())+newLine);
         sb.append(String.format("Total cost: %.2f :-",this.totalSale.getTotalCost())+newLine);
         sb.append(String.format(" Payment: %.2f :-",this.totalSale.getCashPayment().getPayemtn())+newLine);
         sb.append(String.format(" Change: %.2f :-",this.change));

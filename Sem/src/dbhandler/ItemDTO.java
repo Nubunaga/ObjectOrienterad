@@ -8,7 +8,7 @@ public class ItemDTO {
     private int quantity;
     private String newLine = System.getProperty("line.separator");
 
-        ItemDTO(float price, String name, String itemID,float vatRate, int quantity ){
+       public ItemDTO(float price, String name, String itemID,float vatRate, int quantity ){
         this.price = price;
         this.itemID = itemID;
         this.name = name;
@@ -17,7 +17,7 @@ public class ItemDTO {
     }
     public String toString(){
             String s ;
-            s = "|"+this.name+","+this.price+":-,"+this.itemID+","+this.quantity+","+this.vatRate+"|"+newLine;
+            s = "|"+this.name+","+this.price+":-,"+this.quantity+","+this.vatRate+"|"+newLine;
             return s;
     }
 

@@ -23,8 +23,10 @@ public class Main {
         * */
         //create all object needed and then run the "fakeSale" operation.
         new DiscountDb();
+        InventoryDb db = new InventoryDb();
+        db.database();
         ExternalAccountingSystem exAccSys = new ExternalAccountingSystem();
-        Inventory inv = new Inventory(new InventoryDb());
+        Inventory inv = new Inventory(db);
         Register reg = new Register(inv,exAccSys);
         Controller contr = new Controller(inv,reg);        //parameters inv,exAccSys used by controller and sub classes
         new Printer();

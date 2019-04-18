@@ -1,6 +1,5 @@
 package model;
 
-import controller.Controller;
 import dbhandler.ExternalAccountingSystem;
 import dbhandler.Inventory;
 import dbhandler.Printer;

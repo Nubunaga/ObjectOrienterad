@@ -8,21 +8,23 @@ public class Inventory {
     public Inventory(InventoryDb inv){
         this.inv = inv;
     }
-    public ItemDTO checkValidation (String itemID,int quantity){
-        ItemDTO test = new ItemDTO(23.50f,"mjölk","3536", 0.12f,quantity);
-        if(itemID.equals(test.getItemID())){
-            return test;
+    public ItemDTO checkValidation (String itemID,int quantity) {
+        for (ItemDTO checker : inv.getInventoryList()) {
+            if (itemID.equals(checker.getItemID())) {
+                return new ItemDTO(checker.getPrice(),checker.getName(),checker.getItemID(),checker.getVatRate(),quantity);
+            }
         }
-        else{
-            return null;
-        }
+        return null;
     }
     public void uppdateInvetory(TotalSaleDTO totalSale){
-        ItemDTO test = new ItemDTO(23.50f,"mjölk","3536", 0.12f,45);
-        for (ItemDTO item : totalSale.getSale().getItem()){
-            test.setQuantity(test.getQuantity()-item.getQuantity());
-        }
-        System.out.println(""+test);
+       for (ItemDTO item : totalSale.getSale().getItem()) {
+           for (ItemDTO uppdate: inv.getInventoryList()){
+               if (item.getItemID().equals(uppdate.getItemID())){
+                   uppdate.setQuantity(uppdate.getQuantity()-item.getQuantity());
+               }
+           }
+       }
+
     }
 
 }
