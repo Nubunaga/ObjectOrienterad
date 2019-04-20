@@ -1,3 +1,6 @@
+/*For the MVC layering, this packages is only used på class controller to execute different part of the program
+*@ Author Netanel Avraham Eklind*/
+
 package controller;
 // import packages that are in association to this package
 import dbhandler.Inventory;
@@ -42,5 +45,13 @@ public class Controller {
         TotalSaleDTO totalCost = sale.endSale(payment);
        Reciept change = register.addToRegister(totalCost);
          return change;                                             // returns the change if there are any!.
+    }
+/*Get the inv object*/
+    public Inventory getInv() {
+        return inv;
+    }
+/*Get the register object*/
+    public Register getRegister() {
+        return register;
     }
 }

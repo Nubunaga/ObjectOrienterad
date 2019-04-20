@@ -7,15 +7,14 @@ package startUp;        // the package currently in
 
 /************************************************/
 /*Below follow the packages that are used by main*/
-import controller.Controller;
+import controller.*;
 import dbhandler.*;
-import model.Register;
-import test.DiscountDb;
-import test.InventoryDb;
-import view.View;
+import model.*;
+import test.*;
+import view.*;
 /************************************************/
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args)throws Exception{
         /*Classes for the test file be created here, These are made to test the different part of the program.*/
 
         new DiscountDb();

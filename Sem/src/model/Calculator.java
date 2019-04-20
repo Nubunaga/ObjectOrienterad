@@ -1,3 +1,5 @@
+/*This class is used to create the object calculator and calculate total cost, running total
+* @ Author Netanel Avraham Eklind */
 package model;
 
 import dbhandler.ItemDTO;
@@ -5,10 +7,11 @@ import dbhandler.ItemDTO;
 import java.util.ArrayList;
 
 public class Calculator {
+    //constructor
     Calculator() {
 
     }
-
+    // calculate running total, package private
     float runningTotal(ArrayList<ItemDTO> sale,float discount) {
         try {
             float runningTotal = 0;
@@ -21,6 +24,7 @@ public class Calculator {
             return 0;
         }
     }
+    //calculate total cost, package private
     float calculateTotalCost(SaleDTO sale){
         float totalCost = sale.getRunningTotal();
         return totalCost;

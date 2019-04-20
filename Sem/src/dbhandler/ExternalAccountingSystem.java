@@ -1,12 +1,24 @@
+/*External system handler that updates the accounting system with recent purchases
+* @ Author: Netanel Avraham Eklind */
+
+
 package dbhandler;
 
 import model.TotalSaleDTO;
 
 public class ExternalAccountingSystem {
+    float registerMoney;
+    /*Constructor*/
     public ExternalAccountingSystem(){
 
     }
+
+    /*Log the Sale of the previous sale (cash)*/
     public void logSale(TotalSaleDTO totalSale){
-        float registerMoeny = (totalSale.getTotalCost()- totalSale.getCashPayment().getPayemtn());
+        registerMoney = (totalSale.getTotalCost()- totalSale.getCashPayment().getPayemtn());
+    }
+    /*Get the amount in account*/
+    public float getRegisterMoney() {
+        return registerMoney;
     }
 }
