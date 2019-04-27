@@ -1,5 +1,6 @@
-/*For the MVC layering, this packages is only used på class se.kth.iv1350.pos.controller to execute different part of the program
-*@ Author Netanel Avraham Eklind*/
+/*The controller class that is presented here is used to be a bridge between the view (user interface)
+* and the rest of the program.
+* @Author Netanel Avraham Eklind*/
 
 package se.kth.iv1350.pos.controller;
 // import packages that are in association to this package
@@ -16,42 +17,59 @@ public class Controller {
     public Controller(){
 
     }
-    // create se.kth.iv1350.pos.controller
+    /*Constructor for object controller
+    * @param inv and reg are 2 object created in main
+    */
     public Controller(Inventory inv,Register reg){
     this.inv = inv;
     this.register = reg;
     }
-    // start a new sale object by calling constructor in Sale class
+    /*Starts every new sale for the program.*/
     public void startNewSale(){
         this.sale = new Sale();
     }
-    //Add a new item to sale method.
+    /*The method <code> addItem </code> is called each time a new item is to be checked and added to the current sale
+    * @param itemID is the id for the item.
+    * @param quantity is used to set the amount of the item that is to be bought
+    * @return saleInfo, object is returned with object and displayed if it contains a object.
+    * if <code>null</code> then a exception will be thrown in view.
+    * */
     public SaleDTO addItem(String itemID, int quantity){
-        ItemDTO item = inv.checkValidation(itemID,quantity);        // check with inventory class.
-        SaleDTO saleinfo =  sale.addSale(item);                     // add this information to sale and then return info
-        return saleinfo;
+        ItemDTO item = inv.checkValidation(itemID,quantity);
+        return sale.addSale(item);
     }
 
-    /* Check Consumer Id for Consumer based discount.
-    Else just apply normal discount*/
+    /*The method take an input as a object string and with that searches the database for this person and apply discount.
+    @param costumerID will be sent as an argument to method <code>sale.applySaleChange()</code>.
+    @return will be of the new sale information as an new object of SaleDTO that will be shown to the costumer.
+    */
     public SaleDTO enterCostumerID(String costumerID){
-        SaleDTO newSale = sale.applySaleChange(costumerID);
-        return newSale;                                             // return new information.
+        return sale.applySaleChange(costumerID);
     }
 
-    // add the payment and creates the objects needed for this.
+    /*Method <code> addPayment </code> takes input from the view class and creates a object as payment, that is used
+    to create a total sale DTO that contains all information about the current sale.
+    * @param takes pay and applies it to a new object, this is then used in <code> new CashPayment(pay) </code>
+    * @return object by the name Receipt that will be created by executing method
+     <code>register.addToRegister(totalCost)</code>*/
     public Reciept addPayment(float pay){
         CashPayment payment = new CashPayment(pay);
         TotalSaleDTO totalCost = sale.endSale(payment);
-       Reciept change = register.addToRegister(totalCost);
-         return change;                                             // returns the change if there are any!.
+         return register.addToRegister(totalCost);
     }
-/*Get the inv object*/
+    /*Gets the inventory object to be used in the public interface.
+    * @return the current <code>Inventory</code> object, <code> null</code> or object.*/
     public Inventory getInv() {
         return inv;
     }
-/*Get the register object*/
+    /*Gets the register object to be used in the public interface
+    * @return the current <code>Register</code> object that is associated to controller.*/
     public Register getRegister() {
         return register;
+    }
+    /*Get the register object to be used in the public interface
+    * @ return the current <code>Sale</code> object that is associated with controller*/
+    public Sale getSale() {
+        return sale;
     }
 }

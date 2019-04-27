@@ -36,7 +36,7 @@ public class Register {
     }
 
     private void updateExternalSystem(TotalSaleDTO totalSale){
-        inv.uppdateInvetory(totalSale);
+        inv.updateInventory(totalSale);
         exas.logSale(totalSale);
     }
 }

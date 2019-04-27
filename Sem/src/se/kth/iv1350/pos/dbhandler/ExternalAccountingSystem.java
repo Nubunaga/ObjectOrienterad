@@ -10,12 +10,12 @@ public class ExternalAccountingSystem {
     float registerMoney;
     /*Constructor*/
     public ExternalAccountingSystem(){
-
+    this.registerMoney = 15000;
     }
 
     /*Log the Sale of the previous sale (cash)*/
     public void logSale(TotalSaleDTO totalSale){
-        registerMoney = (totalSale.getTotalCost()- totalSale.getCashPayment().getPayemtn());
+        registerMoney += totalSale.getTotalCost();
     }
     /*Get the amount in account*/
     public float getRegisterMoney() {

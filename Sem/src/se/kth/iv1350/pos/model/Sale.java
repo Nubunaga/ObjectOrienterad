@@ -20,7 +20,7 @@ public class Sale {
     // add new item DTO to Sale
     public SaleDTO addSale(ItemDTO item){
         if (!item.equals(null)){                // checks if there is an item.
-            if(newItem(item)){      // add item if false, else do not.
+            if(newItem(item)){                   // add item if false, else do not.
             sale.add(item);
             }
             SaleDTO saleInfo = new SaleDTO(sale,calc.runningTotal(sale,1)); // return sale dto(information)
@@ -32,11 +32,13 @@ public class Sale {
     }
 
     private boolean newItem(ItemDTO item){
+        int count = 0;
         for(ItemDTO check : sale){
             if (item.getItemID().equals(check.getItemID())){            // if the item already exist in sale.
-                check.setQuantity(item.getQuantity()+check.getQuantity());
+                addNewQuantity(check,item,count);
                return false;
             }
+            count++;
         }
         return true;
     }
@@ -44,8 +46,7 @@ public class Sale {
     public SaleDTO applySaleChange(String costumerID){
         SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,1)); // the 1 is for a discount change, if there is one.
         float discount = dR.calculateDiscount(sale,logs,costumerID);
-        SaleDTO saleinfo = new SaleDTO(sale,calc.runningTotal(sale,discount));  // this can be seen here as a new variable.
-        return saleinfo;
+        return new SaleDTO(sale,calc.runningTotal(sale,discount));  // this can be seen here as a new variable.
     }
     // end sale signal to gather all information and send it to other classes for calculations.
     public TotalSaleDTO endSale(CashPayment pay){
@@ -53,5 +54,13 @@ public class Sale {
         float totalCost = calc.calculateTotalCost(log);
         TotalSaleDTO totalSale = new TotalSaleDTO(log,totalCost,pay);
         return totalSale;
+    }
+    private void addNewQuantity (ItemDTO check, ItemDTO item,int count){
+        sale.remove(count);
+        createNewDTO(check,item,count);
+    }
+    private void createNewDTO(ItemDTO check, ItemDTO item,int count){
+        sale.add(count,new ItemDTO(check.getPrice(),check.getName(),check.getItemID(),
+                check.getVatRate(),check.getQuantity()+item.getQuantity()));
     }
 }

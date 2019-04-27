@@ -3,7 +3,7 @@
 package se.kth.iv1350.pos.dbhandler;
 // import packages associated with this class
 import se.kth.iv1350.pos.model.SaleDTO;
-import se.kth.iv1350.pos.databasetest.DiscountDb;
+import se.kth.iv1350.pos.database.DiscountDb;
 import java.util.ArrayList;
 
 public class DiscountRule {

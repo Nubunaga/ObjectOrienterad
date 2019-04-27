@@ -3,11 +3,10 @@
 
 package se.kth.iv1350.pos.dbhandler;
 
-/********************************/
 // packages for association with package se.kth.iv1350.pos.dbhandler.
 import se.kth.iv1350.pos.model.TotalSaleDTO;
-import se.kth.iv1350.pos.databasetest.InventoryDb;
-/********************************/
+import se.kth.iv1350.pos.database.InventoryDb;
+
 
 public class Inventory {
         InventoryDb inv;
@@ -20,7 +19,7 @@ public class Inventory {
     public ItemDTO checkValidation (String itemID,int quantity) {
         // in the event of a lost of connection, a try catch is implemented.
         try{
-        for (ItemDTO checker : inv.getInventoryList()) {
+        for (Item checker : inv.getInventoryList()) {
             if (itemID.equals(checker.getItemID())) {
                 return new ItemDTO(checker.getPrice(),checker.getName(),checker.getItemID(),checker.getVatRate(),quantity);
             }
@@ -33,13 +32,13 @@ public class Inventory {
     }
 
     /*Used to update external inventory with new sale info.*/
-    public void uppdateInvetory(TotalSaleDTO totalSale){
+    public void updateInventory(TotalSaleDTO totalSale){
 
         // goes through each item and checks for both inventory and recent sale.
        for (ItemDTO item : totalSale.getSale().getItem()) {
-           for (ItemDTO uppdate: inv.getInventoryList()){
-               if (item.getItemID().equals(uppdate.getItemID())){
-                   uppdate.setQuantity(uppdate.getQuantity()-item.getQuantity());
+           for (Item update: inv.getInventoryList()){
+               if (item.getItemID().equals(update.getItemID())){
+                   update.setQuantity(update.getQuantity()-item.getQuantity());
                }
            }
        }

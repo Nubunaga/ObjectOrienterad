@@ -1,11 +1,14 @@
 /*The se.kth.iv1350.pos.view class that is presented here is a user interface class that takes input by the user and show
 output as return. This is to keep a good structure and handling for the programmer and user.
 * @ Author: Netanel Avraham Eklind*/
+// studentrekrytering @kth.se
+//cv och personligt brev.
+
 
 package se.kth.iv1350.pos.view;
 // packages that are associated to se.kth.iv1350.pos.view package.
 import se.kth.iv1350.pos.controller.Controller;
-import se.kth.iv1350.pos.dbhandler.ItemDTO;
+import se.kth.iv1350.pos.dbhandler.Item;
 import se.kth.iv1350.pos.model.Reciept;
 import se.kth.iv1350.pos.model.SaleDTO;
 
@@ -29,9 +32,8 @@ public class View {
     }
 
     /*
-    * The method runFakeSale is the method that runs to begin the initial starting point
-    * for the cash register system. This is the user interface that the user, in this case
-    * cashier is gonna see and interact with.
+    * The method runFakeSale purpose is to start the "user interface" for the user of this program and takes command
+    * as inputs from the user to initialize different part of the program.
     * @ param there is no parameters in this method, it takes input directly from the user.
     * @ return there is no return in this program. ,
     * */
@@ -53,7 +55,7 @@ public class View {
 
             /*Check inventory*/
           case "inventory":
-            for (ItemDTO check : controller.getInv().getInv().getInventoryList()) {
+            for (Item check : controller.getInv().getInv().getInventoryList()) {
               System.out.println("" + check);
             }
               break;
@@ -71,35 +73,44 @@ public class View {
         }
       }
     }
-
-   private void addItem(){
+/*
+* The method <code>addItem</code> purpose is to take command if the user enters a new sale, and allow the user to enter
+* an item id to add to the sale.under the code a <code> while </code> loop will continuously check for a command to end
+* the new sale. A <code> try / catch </code> exception handler is used to handle the "no item found".
+* */
+    private void addItem(){
      String itemID;
-            while (!"End".equals(itemID = in.next())) {       // checks for "End"
-
-              // try to use the sale program, if null return catch nullPointException
+            while (!"End".equals(itemID = in.next())) {
               try {
                 SaleDTO saleInfo = controller.addItem(itemID,in.nextInt());
                 System.out.println("" + saleInfo);
               }
-              // catch the NullPointerException and print "no itemID valid".
               catch (Exception e) {
                 System.out.println("No item id for that item");
               }
             }
    }
+   /*The purpose of he method <code> addDiscount </code> is to give the user a input chanel for discount and receives a
+   * input at <code> SaleDTO newSale = controller.enterCostumerID(in.next()) </code> for the costumer id in string form.
+   * This will then send this information to check the discount rules if this is applicable.
+   * */
    private void addDiscount(){
             System.out.println("Enter costumer id: ");
-            SaleDTO newSale = controller.enterCostumerID(in.next());    // send costumer id
-            System.out.println("" + newSale);                     // Print new sale-value after discount
+            SaleDTO newSale = controller.enterCostumerID(in.next());
+            System.out.println("" + newSale);
    }
-   private void addPayment()throws IOException, InterruptedException {
+   /*The method <code> addPayment </code> is to take an input from the user as a payment and receive back a object that
+   * shows the change for the sale, if there is any. A <code> try /catch </code> is implemented if the person entering
+   * the code enters wrong id, this will then restart the input with a message that says "wrong input". */
+    private void addPayment()throws IOException, InterruptedException {
       try {
-        Reciept change = controller.addPayment(in.nextFloat());             // send payment
+        Reciept change = controller.addPayment(in.nextFloat());
         clearScreen();
-        System.out.println("" + change);                        // Print the receipt that will be received.
+        System.out.println("" + change);
       }
       catch (Exception e){
         System.out.println("what!?");
+
       }
    }
     /*a static method that only task is to clear a cmd command screen so the user only sees the receipt.*/
