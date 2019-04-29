@@ -9,7 +9,7 @@ package se.kth.iv1350.pos.view;
 // packages that are associated to se.kth.iv1350.pos.view package.
 import se.kth.iv1350.pos.controller.Controller;
 import se.kth.iv1350.pos.dbhandler.Item;
-import se.kth.iv1350.pos.model.Reciept;
+import se.kth.iv1350.pos.model.Receipt;
 import se.kth.iv1350.pos.model.SaleDTO;
 
 // utility and io classes that are used in this class
@@ -63,7 +63,7 @@ public class View {
             /*Register check*/
           case "register":
 
-            System.out.println(controller.getRegister().getExas().getRegisterMoney());
+            System.out.println(controller.getRegister().getExternalAccountingSystem().getRegisterMoney());
 
             break;
             default:
@@ -104,7 +104,7 @@ public class View {
    * the code enters wrong id, this will then restart the input with a message that says "wrong input". */
     private void addPayment()throws IOException, InterruptedException {
       try {
-        Reciept change = controller.addPayment(in.nextFloat());
+        Receipt change = controller.addPayment(in.nextFloat());
         clearScreen();
         System.out.println("" + change);
       }
@@ -113,7 +113,7 @@ public class View {
 
       }
    }
-    /*a static method that only task is to clear a cmd command screen so the user only sees the receipt.*/
+    /*a static method that only task is to clear a cmd command screen so the user only sees the Receipt.*/
   private static void clearScreen() throws IOException, InterruptedException {
     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
   }

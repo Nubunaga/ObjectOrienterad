@@ -24,10 +24,12 @@ public class Controller {
     this.inv = inv;
     this.register = reg;
     }
+
     /*Starts every new sale for the program.*/
     public void startNewSale(){
         this.sale = new Sale();
     }
+
     /*The method <code> addItem </code> is called each time a new item is to be checked and added to the current sale
     * @param itemID is the id for the item.
     * @param quantity is used to set the amount of the item that is to be bought
@@ -52,21 +54,24 @@ public class Controller {
     * @param takes pay and applies it to a new object, this is then used in <code> new CashPayment(pay) </code>
     * @return object by the name Receipt that will be created by executing method
      <code>register.addToRegister(totalCost)</code>*/
-    public Reciept addPayment(float pay){
+    public Receipt addPayment(float pay){
         CashPayment payment = new CashPayment(pay);
         TotalSaleDTO totalCost = sale.endSale(payment);
          return register.addToRegister(totalCost);
     }
+
     /*Gets the inventory object to be used in the public interface.
     * @return the current <code>Inventory</code> object, <code> null</code> or object.*/
     public Inventory getInv() {
         return inv;
     }
+
     /*Gets the register object to be used in the public interface
     * @return the current <code>Register</code> object that is associated to controller.*/
     public Register getRegister() {
         return register;
     }
+
     /*Get the register object to be used in the public interface
     * @ return the current <code>Sale</code> object that is associated with controller*/
     public Sale getSale() {

@@ -13,20 +13,18 @@ import se.kth.iv1350.pos.database.*;
 import se.kth.iv1350.pos.view.*;
 
 public class Main {
+    /*The main method will startup different <code> constructors </code> that is crucial to the business program, thus
+    * this method is only used to start the program then never again.  */
     public static void main(String[] args)throws Exception{
-        /*Classes for the se.kth.iv1350.pos.database file be created here, These are made to se.kth.iv1350.pos.database the different part of the program.*/
 
         new DiscountDb();
         InventoryDb db = new InventoryDb();
         db.database();
-
-        //create all object needed and then run the "fakeSale" operation.
         ExternalAccountingSystem exAccSys = new ExternalAccountingSystem();
         Inventory inv = new Inventory(db);
         Register reg = new Register(inv,exAccSys);
-        Controller controller = new Controller(inv,reg);        //parameters inv,exAccSys used by se.kth.iv1350.pos.controller and sub classes
+        Controller controller = new Controller(inv,reg);
         new Printer();
-                                                                // this operation goes to se.kth.iv1350.pos.view to be ready to start fake sale with a "newSale"
         new View(controller).runFakeSale();
     }
 }

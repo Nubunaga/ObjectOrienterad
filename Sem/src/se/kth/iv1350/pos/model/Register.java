@@ -7,36 +7,35 @@ import se.kth.iv1350.pos.dbhandler.Inventory;
 import se.kth.iv1350.pos.dbhandler.Printer;
 
 public class Register {
-    private ExternalAccountingSystem exas;
+    private ExternalAccountingSystem externalAccountingSystem;
     private Inventory inv;
     //constructor blank
     public Register(){
 
     }
     // constructor
-    public Register(Inventory inv, ExternalAccountingSystem exas){
-        this.exas = exas;
+    public Register(Inventory inv, ExternalAccountingSystem externalAccountingSystem){
+        this.externalAccountingSystem = externalAccountingSystem;
         this.inv = inv;
     }
     // method to add the current sale.
-    public Reciept addToRegister(TotalSaleDTO totalSale){
+    public Receipt addToRegister(TotalSaleDTO totalSale){
     updateExternalSystem(totalSale);
     return printReceipt(totalSale);
     }
     // get the accounting object.
-    public ExternalAccountingSystem getExas() {
-        return exas;
+    public ExternalAccountingSystem getExternalAccountingSystem() {
+        return externalAccountingSystem;
     }
 
-    private Reciept printReceipt(TotalSaleDTO totalSale){
-        Reciept reciept = new Reciept(totalSale);
-        Printer printer = new Printer(reciept);
-        Reciept change  = printer.showChange(reciept);
-        return change;
+    private Receipt printReceipt(TotalSaleDTO totalSale){
+        Receipt receipt = new Receipt(totalSale);
+        Printer printer = new Printer(receipt);
+        return printer.showChange(receipt);
     }
 
     private void updateExternalSystem(TotalSaleDTO totalSale){
         inv.updateInventory(totalSale);
-        exas.logSale(totalSale);
+        externalAccountingSystem.logSale(totalSale);
     }
 }

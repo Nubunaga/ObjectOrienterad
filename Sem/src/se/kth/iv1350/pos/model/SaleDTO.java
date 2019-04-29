@@ -13,15 +13,17 @@ public class SaleDTO {
         this.item = item;
         this.runningTotal = runningTotal;
     }
+
     //print the object
     public String toString(){
-        String s = String.format((""+this.item +System.lineSeparator())+ "Running total: %.2f",runningTotal);
-        return s;
+        return String.format((""+this.item +System.lineSeparator())+ "Running total: %.2f",runningTotal);
     }
+
     // get the running total primitive data
     public float getRunningTotal(){
         return this.runningTotal;
     }
+
     // get the item objects.
     public ArrayList<ItemDTO> getItem() {
         return item;

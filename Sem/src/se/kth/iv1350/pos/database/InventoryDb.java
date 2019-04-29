@@ -34,10 +34,10 @@ public class InventoryDb   {
         return inventoryList;
     }
 
-    private void printFile()throws Exception{
+    private void printFile()throws Exception {
         PrintWriter PLU = new PrintWriter("PLU-list.text");
-        for(Item print: inventoryList)
-            PLU.println(print.getName()+" "+print.getItemID());
+        for (Item print : inventoryList)
+            PLU.println(print.getName() + " " + print.getItemID());
         PLU.flush();
         PLU.close();
     }

@@ -3,16 +3,19 @@
 package se.kth.iv1350.pos.model;
 
 public class CashPayment {
-    float payemtn;
-    public CashPayment(float payement){
-        this.payemtn = payement;
+    float payment;
+    public CashPayment(float payment){
+        this.payment = payment;
     }
+
     // get the payment primitive data
-    public float getPayemtn() {
-        return payemtn;
+    public float getPayment() {
+        return payment;
     }
-    //Print object
+
+    /*Used to overwrite and be able to print the object.
+    * @return <code> ""+this.payment </code> as a string. */
     public String toString(){
-        return ""+this.payemtn;
+        return ""+this.payment;
     }
 }
