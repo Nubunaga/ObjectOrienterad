@@ -7,6 +7,7 @@ import se.kth.iv1350.pos.database.DiscountDb;
 import java.util.ArrayList;
 
 public class DiscountRule {
+
     private DiscountDb discountDb;
 
     // constructor
@@ -47,5 +48,9 @@ public class DiscountRule {
     }
     private boolean discountRunningTotal(SaleDTO logs,String costumerId){
         return ( logs.getRunningTotal() == discountDb.getReduction() || costumerId.equals( discountDb.getCostumerID() ));
+    }
+
+    public DiscountDb getDiscountDb() {
+        return discountDb;
     }
 }

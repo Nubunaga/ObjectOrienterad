@@ -18,7 +18,7 @@ public class Sale {
         this.sale = new ArrayList<>();
     }
     // add new item DTO to Sale
-    public SaleDTO addSale(ItemDTO item){
+    public SaleDTO addToSale(ItemDTO item){
         if (!item.equals(null)){                // checks if there is an item.
             if(newItem(item)){                   // add item if false, else do not.
             sale.add(item);
@@ -31,6 +31,22 @@ public class Sale {
         }
     }
 
+    // apply change to sale with the help of discount.
+    public SaleDTO applySaleChange(String costumerID){
+        SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,1)); // the 1 is for a discount change, if there is one.
+        float discount = dR.calculateDiscount(sale,logs,costumerID);
+        return new SaleDTO(sale,calc.runningTotal(sale,discount));  // this can be seen here as a new variable.
+    }
+
+    // end sale signal to gather all information and send it to other classes for calculations.
+    public TotalSaleDTO endSale(CashPayment pay){
+        SaleDTO log = new SaleDTO(sale,calc.runningTotal(sale,1));
+        float totalCost = calc.calculateTotalCost(log);
+        TotalSaleDTO totalSale = new TotalSaleDTO(log,totalCost,pay);
+        return totalSale;
+    }
+
+
     private boolean newItem(ItemDTO item){
         int count = 0;
         for(ItemDTO check : sale){
@@ -42,23 +58,14 @@ public class Sale {
         }
         return true;
     }
-    // apply change to sale with the help of discount.
-    public SaleDTO applySaleChange(String costumerID){
-        SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,1)); // the 1 is for a discount change, if there is one.
-        float discount = dR.calculateDiscount(sale,logs,costumerID);
-        return new SaleDTO(sale,calc.runningTotal(sale,discount));  // this can be seen here as a new variable.
-    }
-    // end sale signal to gather all information and send it to other classes for calculations.
-    public TotalSaleDTO endSale(CashPayment pay){
-        SaleDTO log = new SaleDTO(sale,calc.runningTotal(sale,1));
-        float totalCost = calc.calculateTotalCost(log);
-        TotalSaleDTO totalSale = new TotalSaleDTO(log,totalCost,pay);
-        return totalSale;
-    }
+
+
     private void addNewQuantity (ItemDTO check, ItemDTO item,int count){
         sale.remove(count);
         createNewDTO(check,item,count);
     }
+
+
     private void createNewDTO(ItemDTO check, ItemDTO item,int count){
         sale.add(count,new ItemDTO(check.getPrice(),check.getName(),check.getItemID(),
                 check.getVatRate(),check.getQuantity()+item.getQuantity()));

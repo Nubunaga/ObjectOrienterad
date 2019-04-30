@@ -48,7 +48,7 @@ public class CalculatorTest {
     }
 
     @Test
-    /*This test if there is a null in the sale, how the program handles this.*/
+    /*This test if there is a null in the salelog, how the program handles this.*/
     public void testNullCalculation() {
         boolean instance = (calculator.runningTotal(sale, 1) > 0) ? false : true;
         Assert.assertFalse("There is no value in a null calculation", false);

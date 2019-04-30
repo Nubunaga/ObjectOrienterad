@@ -11,10 +11,10 @@ import se.kth.iv1350.pos.model.*;
 
 
 public class ControllerTest {
-    InventoryDb inventoryDb = new InventoryDb();
-    Inventory inventory;
-    Register register;
-    Controller controller;
+    private InventoryDb inventoryDb = new InventoryDb();
+    private Inventory inventory;
+    private Register register;
+    private Controller controller;
 
     @Before
     /*At the startup of the test program, create the necessary object and use them to test the controller class. */
@@ -89,7 +89,7 @@ public class ControllerTest {
         Assert.assertThat("A receipt is created",instance,CoreMatchers.isA(Receipt.class));
     }
 
-    /*Used to instance a add item or anything of this matter*/
+    /*Used to instanceOfSale a add item or anything of this matter*/
     private SaleDTO addSaleInstance(){
         controller.startNewSale();
         inventoryDb.getInventoryList().add(new Item(23.50f,"Milk","3536", 0.12f,10));

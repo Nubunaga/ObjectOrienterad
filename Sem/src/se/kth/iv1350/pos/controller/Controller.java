@@ -38,7 +38,7 @@ public class Controller {
     * */
     public SaleDTO addItem(String itemID, int quantity){
         ItemDTO item = inv.checkValidation(itemID,quantity);
-        return sale.addSale(item);
+        return sale.addToSale(item);
     }
 
     /*The method take an input as a object string and with that searches the database for this person and apply discount.
