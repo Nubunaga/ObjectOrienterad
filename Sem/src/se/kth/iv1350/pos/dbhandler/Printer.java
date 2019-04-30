@@ -6,18 +6,18 @@ package se.kth.iv1350.pos.dbhandler;
 import se.kth.iv1350.pos.model.Receipt;
 
 public class Printer {
-    Receipt reciept;
+    private Receipt receipt;
     // constructor, blank
     public Printer(){
 
     }
     //constructor, with Receipt class
-    public Printer(Receipt reciept){
-        this.reciept = reciept;
+    public Printer(Receipt receipt){
+        this.receipt = receipt;
     }
     // calculate and return the change to the user.
-    public Receipt showChange(Receipt reciept){
-        reciept.setChange(reciept.getTotalSale().getTotalCost() - reciept.getTotalSale().getCashPayment().getPayment());
-       return reciept;
+    public Receipt showChange(Receipt receipt){
+        receipt.setChange(receipt.getTotalSale().getTotalCost() - receipt.getTotalSale().getCashPayment().getPayment());
+       return receipt;
     }
 }

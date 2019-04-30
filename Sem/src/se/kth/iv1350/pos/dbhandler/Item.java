@@ -1,11 +1,22 @@
+/*This class is used to create an instance of item to be filled in a "database" for checking and using in the program.
+*
+* @Author Netanel Avraham Eklind
+* */
+
 package se.kth.iv1350.pos.dbhandler;
-// inventoryList.add(new ItemDTO(23.50f,"Milk","3536", 0.12f,10));
+
+
 public class Item {
+    /*
+    * Declare all the attributes associated with this class
+    * */
     private float price;
     private String name;
     private String itemID;
     private float vatRate;
     private int quantity;
+
+
     public Item(float price,String name,String itemId,float vat,int quantity){
         this.price = price;
         this.name = name;
@@ -38,7 +49,6 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("[ "+this.name));

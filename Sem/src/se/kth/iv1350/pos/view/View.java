@@ -55,7 +55,7 @@ public class View {
 
             /*Check inventory*/
           case "inventory":
-            for (Item check : controller.getInv().getInv().getInventoryList()) {
+            for (Item check : controller.getInventory().getInventoryDb().getInventoryList()) {
               System.out.println("" + check);
             }
               break;
