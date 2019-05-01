@@ -1,4 +1,4 @@
-/*External inventory handler that are used to check an external inventory system for the correct item
+/**External inventory handler that are used to check an external inventory system for the correct item
 that is searched for in view.
 * @ Author Netanel Avraham Eklind*/
 
@@ -11,14 +11,14 @@ import se.kth.iv1350.pos.database.InventoryDb;
 
 public class Inventory {
         InventoryDb inventoryDb;
-        /*
+        /**
         * Constructor for the inventory object.
         * */
     public Inventory(InventoryDb inventoryDb){
         this.inventoryDb = inventoryDb;
     }
 
-    /*
+    /**
     * The method looks through the entire "database" for the specific item with the given item id.
     * This is done by implementing a <code> for (Item checker : inventoryDb.getInventoryList()) </code> that
     * looks through the database for that item.
@@ -45,7 +45,8 @@ public class Inventory {
         return null;
     }
 
-    /*Goes through the current sale and updates the quantity och each item that have been sold, with the new quantity
+    /**
+    *Goes through the current sale and updates the quantity och each item that have been sold, with the new quantity
     * in the database.
     *
     * @param <code> totalSale </code> contains the entire current sale with items, payment and total cost.
@@ -61,7 +62,7 @@ public class Inventory {
        }
 
     }
-    /*
+    /**
     * get the inventory object.
     *
     * @return inventory database*/
@@ -69,7 +70,7 @@ public class Inventory {
         return inventoryDb;
     }
 
-    /*
+    /**
     * checks if <code> item.getItemID().equals(update.getItemID() </code> is the same.
     *
     * @param update is current database item
@@ -81,7 +82,7 @@ public class Inventory {
         return (itemInSale.getItemID().equals(itemInDatabase.getItemID()));
     }
 
-    /*
+    /**
     * Calculate new amount of item to be set.
     *
     * @param update is current database item.

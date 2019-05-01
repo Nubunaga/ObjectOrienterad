@@ -1,3 +1,7 @@
+/**
+ * Used to test the <code> {@link se.kth.iv1350.pos.dbhandler.Printer}</code>class for unwanted events.
+ * @author Netanel Avraham Eklind
+ * */
 package se.kth.iv1350.pos.dbhandler;
 
 import org.hamcrest.CoreMatchers;
@@ -8,13 +12,9 @@ import org.junit.Test;
 import se.kth.iv1350.pos.database.InventoryDb;
 import se.kth.iv1350.pos.model.*;
 
-import java.io.PrintWriter;
-
-import static org.junit.Assert.*;
-
 public class PrinterTest {
-    Printer printer;
-    Register register;
+    private Printer printer;
+   private Register register;
 
     @Before
     public void setUp() throws Exception {
@@ -28,7 +28,7 @@ public class PrinterTest {
     }
 
     @Test
-    /*Test the calculation of the change*/
+    /**Test the calculation of the change*/
     public void testChangeCalculation(){
         Sale sale = new Sale();
         sale.addToSale(new ItemDTO(23.5f,"Milk","3536",0.12f,3));

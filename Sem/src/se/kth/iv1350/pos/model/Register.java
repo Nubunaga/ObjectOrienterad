@@ -1,4 +1,4 @@
-/*This class is used to update different external systems and also check what is in register as sale atm.
+/**This class is used to update different external systems and also check what is in register as sale atm.
 * @ Author Netanel Avraham Eklind*/
 package se.kth.iv1350.pos.model;
 // Associated classes are imported.
@@ -9,21 +9,29 @@ import se.kth.iv1350.pos.dbhandler.Printer;
 public class Register {
     private ExternalAccountingSystem externalAccountingSystem;
     private Inventory inv;
-    //constructor blank
+    /**A blank constructor that can be used to access the methods in this class.*/
     public Register(){
 
     }
-    // constructor
-    public Register(Inventory inv, ExternalAccountingSystem externalAccountingSystem){
+    /**A constructor that creates the object register witch contains <code>this.externalAccountingSystem </code> and
+     * <code>this.inv </code>
+     * @param inventory   contain the inventory object.
+     * @param externalAccountingSystem contains the externalAccountingSystem object*/
+    public Register(Inventory inventory, ExternalAccountingSystem externalAccountingSystem){
         this.externalAccountingSystem = externalAccountingSystem;
-        this.inv = inv;
+        this.inv = inventory;
     }
-    // method to add the current sale.
+    /**
+     * This method updates <code>updateExternalSystem(totalSale) </code> and creates a receipt
+     * @param totalSale   contains all sale information and payment received
+     * @return an object by <code> Receipt </code> that contain all the information in <code> totalSale </code>*/
     public Receipt addToRegister(TotalSaleDTO totalSale){
     updateExternalSystem(totalSale);
     return printReceipt(totalSale);
     }
-    // get the accounting object.
+    /**
+     * Gets the externalAccountingSystem from the object <code> {@link Register} </code>
+     * @return externalAccountingSystem*/
     public ExternalAccountingSystem getExternalAccountingSystem() {
         return externalAccountingSystem;
     }

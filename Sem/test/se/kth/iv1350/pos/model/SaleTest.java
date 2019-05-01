@@ -1,3 +1,7 @@
+/**
+ * Used to test the <code> {@link se.kth.iv1350.pos.model.Sale}</code>
+ * @author Netanel Avraham Eklind
+ * */
 package se.kth.iv1350.pos.model;
 
 import org.hamcrest.CoreMatchers;
@@ -26,14 +30,14 @@ public class SaleTest {
     }
 
     @Test
-    /*Test that the array list is created correctly*/
+    /**Test that the array list is created correctly*/
     public void testSaleArray(){
         salelog = new ArrayList<>();
         Assert.assertArrayEquals(new ArrayList<ItemDTO>().toArray(), salelog.toArray());
     }
 
     @Test
-    /*Test adding a new item*/
+    /**Test adding a new item*/
     public void testAddNewItem(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         salelog.add(item);
@@ -42,7 +46,7 @@ public class SaleTest {
     }
 
     @Test
-    /*Test that the item is not null*/
+    /**Test that the item is not null*/
     public void testAddItemNotNull(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         salelog.add(item);
@@ -51,7 +55,7 @@ public class SaleTest {
     }
 
     @Test
-    /*test the add item method for multiple item, added at different times on the current salelog*/
+    /**test the add item method for multiple item, added at different times on the current salelog*/
     public void testNotNewItem(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         SaleDTO instance = sale.addToSale(item);
@@ -68,7 +72,7 @@ public class SaleTest {
     }
 
     @Test
-    /*How the program handles no item found*/
+    /**How the program handles no item found*/
     public void testNullAdd(){
      try {
             sale.addToSale(null);
@@ -79,7 +83,7 @@ public class SaleTest {
     }
 
     @Test
-    /*Test discount applying*/
+    /**Test discount applying*/
     public void testSaleChange(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         SaleDTO normalSale = sale.addToSale(item);
@@ -88,7 +92,7 @@ public class SaleTest {
     }
 
     @Test
-    /*Test the "end " signal creation*/
+    /**Test the "end " signal creation*/
     public void testEndSale(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         sale.addToSale(item);

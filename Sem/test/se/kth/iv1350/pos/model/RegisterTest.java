@@ -1,3 +1,8 @@
+/**
+ * Used to test the <code> {@link se.kth.iv1350.pos.model.Register}</code>
+ * @author Netanel Avraham Eklind
+ * */
+
 package se.kth.iv1350.pos.model;
 
 import org.hamcrest.CoreMatchers;
@@ -8,12 +13,10 @@ import org.junit.Test;
 import se.kth.iv1350.pos.database.InventoryDb;
 import se.kth.iv1350.pos.dbhandler.ExternalAccountingSystem;
 import se.kth.iv1350.pos.dbhandler.Inventory;
-import se.kth.iv1350.pos.dbhandler.Item;
 import se.kth.iv1350.pos.dbhandler.ItemDTO;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
 
 public class RegisterTest {
     Register register;
@@ -31,7 +34,7 @@ public class RegisterTest {
     }
 
     @Test
-    /*Test that a receipt is created*/
+    /**Test that a receipt is created*/
     public void testReceipt (){
         ItemDTO bought =  new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         ArrayList<ItemDTO> sale = new ArrayList<ItemDTO>();
@@ -42,7 +45,7 @@ public class RegisterTest {
     }
 
     @Test
-    /*Test how the program handles a empty receipt*/
+    /**Test how the program handles a empty receipt*/
     public void testEmptyReceipt(){
 
         TotalSaleDTO  instance = new TotalSaleDTO(new SaleDTO(new ArrayList<>(),0),0,new CashPayment(100));

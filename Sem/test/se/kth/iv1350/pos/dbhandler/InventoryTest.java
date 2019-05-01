@@ -1,3 +1,8 @@
+/**
+ * Used to test the <code> {@link se.kth.iv1350.pos.dbhandler.Inventory}</code> for unwanted events.
+ * @author Netanel Avraham Eklind
+ * */
+
 package se.kth.iv1350.pos.dbhandler;
 
 import org.hamcrest.CoreMatchers;
@@ -25,13 +30,13 @@ public class InventoryTest {
     }
 
     @Test
-    /*Test the validation system for the inventory by looking for an instance of ItemDTO*/
+    /**Test the validation system for the inventory by looking for an instance of ItemDTO*/
     public void validationTest(){
         Assert.assertThat("An ItemDTO is created", inventory.checkValidation("3536",3),
                 CoreMatchers.isA(ItemDTO.class));
     }
     @Test
-    /*test if the item DTO returned is the same as the one asked for*/
+    /**test if the item DTO returned is the same as the one asked for*/
     public void ItemTest(){
         ItemDTO item = inventory.checkValidation("3536",3);
         boolean checker = (item.getItemID().equals("3536"))?true:false;
@@ -39,7 +44,7 @@ public class InventoryTest {
     }
 
     @Test
-    /*Test for a wrong itemID search*/
+    /**Test for a wrong itemID search*/
     public void ItemIDFail(){
         ItemDTO item = inventory.checkValidation("4000",3);
         boolean checker = (item == null)?true:false;
@@ -47,7 +52,7 @@ public class InventoryTest {
     }
 
     @Test
-    /*Test how the method handles a update to inventory.*/
+    /**Test how the method handles a update to inventory.*/
     public void testUpdateInventory(){
         Sale sale = new Sale();
         ItemDTO saleLog = new ItemDTO(23.5f,"Milk","3536",0.12f,4);

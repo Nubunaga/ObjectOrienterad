@@ -1,22 +1,21 @@
-/*Test Db for Inventory
+/**Test Db for Inventory
 * @ Author: Netanel Avraham Eklind*/
 
 package se.kth.iv1350.pos.database;
 
 import se.kth.iv1350.pos.dbhandler.Item;
-import se.kth.iv1350.pos.dbhandler.ItemDTO;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class InventoryDb   {
     ArrayList<Item> inventoryList;       // create a list to use
-    /*Constructor*/
+    /**Constructor*/
     public InventoryDb(){
     this.inventoryList = new ArrayList<Item>();
     }
 
-    /*Create "new" database with different items to find*/
+    /**Create "new" database with different items to find*/
     public void database() throws Exception{
         inventoryList.add(new Item(23.50f,"Milk","3536", 0.12f,10));
         inventoryList.add(new Item(24.95f,"Butter","3537", 0.12f,15));
@@ -29,7 +28,7 @@ public class InventoryDb   {
         printFile();
     }
 
-    /*Get the entire database list.*/
+    /**Get the entire database list.*/
     public ArrayList<Item> getInventoryList() {
         return inventoryList;
     }

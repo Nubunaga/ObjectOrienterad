@@ -1,3 +1,9 @@
+/**
+ * Used to test the <code>toString</code> method for
+ * <code> {@link se.kth.iv1350.pos.model.Receipt}</code>
+ * @author Netanel Avraham Eklind
+ * */
+
 package se.kth.iv1350.pos.model;
 
 import org.hamcrest.CoreMatchers;
@@ -7,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 import se.kth.iv1350.pos.dbhandler.ItemDTO;
 
-import static org.junit.Assert.*;
 
 public class ReceiptTest {
     TotalSaleDTO totalSale;
@@ -27,7 +32,7 @@ public class ReceiptTest {
     }
 
     @Test
-    /*This test the entire print system for the printer to work.*/
+    /**This test the entire print system for the printer to work.*/
     public void toString1() {
         Sale sale = new Sale();
         sale.addToSale(new ItemDTO(23.5f,"Milk","3536",0.12f,3));

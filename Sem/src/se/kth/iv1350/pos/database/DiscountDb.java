@@ -1,4 +1,4 @@
-/*Used to se.kth.iv1350.pos.database the program with different uses for discounts.
+/**Used to se.kth.iv1350.pos.database the program with different uses for discounts.
 * @ Author Netanel Avraham Eklind*/
 
 package se.kth.iv1350.pos.database;

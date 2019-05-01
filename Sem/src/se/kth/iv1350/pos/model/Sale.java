@@ -1,4 +1,4 @@
-/*This class is used to handle the current sale and send the information needed to other classes with the help of a DTO.
+/**This class is used to handle the current sale and send the information needed to other classes with the help of a DTO.
 It also is here tio help calculate the current sale value and send back information.
 * @ Author Netanel Avraham Eklind*/
 
@@ -15,13 +15,13 @@ public class Sale {
     Calculator calc ;
     DiscountRule dR ;
 
-   /*constructor that creates new object to be used by sale.*/
+   /**constructor that creates new object to be used by sale.*/
     public Sale(){
         this.calc = new Calculator();
         this.dR = new DiscountRule();
         this.sale = new ArrayList<>();
     }
-    /*
+    /**
     * The method adds a new item to the <code> ArrayList <ItemDTO> sale</code>
     * and increase the sale information.It updates every time a item is added.
     *
@@ -43,9 +43,9 @@ public class Sale {
         }
     }
 
-    /*This method checks for the discount rules and updates the sale accordingly.
+    /**This method checks for the discount rules and updates the sale accordingly.
     *
-    * @param costumerId takes the id and is used in <code>
+    * @param costumerID takes the id and is used in <code>
     * R.calculateDiscount(sale,logs,costumerID </code> to update discount with or
     * without the correct id.
     *
@@ -57,7 +57,7 @@ public class Sale {
         return new SaleDTO(sale,calc.runningTotal(sale,discount));
     }
 
-    /*This method is an end sale signal that tells the program to start creating an object
+    /**This method is an end sale signal that tells the program to start creating an object
     * containing all the current information.
     *
     * @param pay is the object containing the amount paid by the costumer.
@@ -71,7 +71,7 @@ public class Sale {
         return new TotalSaleDTO(log,totalCost,pay);
     }
 
-    /*This private method is used to check if an item added is new or if it has been added to sale
+    /**This private method is used to check if an item added is new or if it has been added to sale
     * before.
     *
     * @param item is current item to be checked.
@@ -91,7 +91,7 @@ public class Sale {
         return true;
     }
 
-    /*This method is used to update the quantity by removing the previous sale item and add a new dto with current
+    /**This method is used to update the quantity by removing the previous sale item and add a new dto with current
     * quantity
     *
     * @param check is the current sale
@@ -105,7 +105,7 @@ public class Sale {
         createNewDTO(check,item,count);
     }
 
-    /*Creates the new item DTO here.
+    /**Creates the new item DTO here.
     *
     * @param check, current sale item
     *

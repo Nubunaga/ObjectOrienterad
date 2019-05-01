@@ -1,4 +1,4 @@
-/*This class is used to create an instance of item to be filled in a "database" for checking and using in the program.
+/**This class is used to create an instance of item to be filled in a "database" for checking and using in the program.
 *
 * @Author Netanel Avraham Eklind
 * */
@@ -13,7 +13,7 @@ public class Item {
     private float vatRate;
     private int quantity;
 
-    /*
+    /**
     * Constructor for the object <code> Item </code>
     * @param price is the cost of the item
     * @param name, name of the item
@@ -29,46 +29,47 @@ public class Item {
         this.vatRate = vat;
         this.quantity = quantity;
     }
-    /*
+    /**
     * Get the name of the Item object
     * @return the name
     * */
     public String getName() {
         return name;
     }
-    /*
+    /**
     * Get the item id of the object
     * @return itemID
     * */
     public String getItemID() {
         return itemID;
     }
-    /*
+    /**
     * Get the price of the item
     * @return the price as float
     * */
-    public float getPrice() {
+     float getPrice() {
         return price;
     }
-    /*
+    /**
     * Get the vat rate for the item.
     * @return the vat rate
     * */
-    public float getVatRate() {
+     float getVatRate() {
         return vatRate;
     }
-    /*Get the quantity of the item
+    /**Get the quantity of the item
     * @return the quantity*/
     public int getQuantity() {
         return quantity;
     }
-    /*set the quantity of the item
+    /**
+    *set the quantity of the item
     * @param quantity is the new amount of item to
     * be set*/
-    public void setQuantity(int quantity) {
+    void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    /*Overrides the original object print method and thus becomes capable of printing the object.*/
+    /**Overrides the original object print method and thus becomes capable of printing the object.*/
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("[ "+this.name));

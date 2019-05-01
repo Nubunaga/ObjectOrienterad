@@ -1,4 +1,4 @@
-/*This class is used to transport information to sale with different discount rules that are acquired from discount db
+/**This class is used to transport information to sale with different discount rules that are acquired from discount db
 * @ Author Netanel Avraham Eklind */
 package se.kth.iv1350.pos.dbhandler;
 // import packages associated with this class
@@ -10,14 +10,14 @@ public class DiscountRule {
 
     private DiscountDb discountDb;
 
-    /*
+    /**
     *Constructor for the <code> DiscountRule </code> object
     **/
     public DiscountRule() {
         this.discountDb = new DiscountDb();
 
     }
-    /*
+    /**
     * The method <code> calculateDiscount </code> calculates a new price following different discount rules provided by
     * a external database.
     *
@@ -56,7 +56,7 @@ public class DiscountRule {
         return 0;
     }
 
-    /*
+    /**
     * This method is used to check the item id for discount rule, item id.
     *
     * @param check contains the current <code> ItemDTO </code> in the array list
@@ -68,7 +68,7 @@ public class DiscountRule {
         return check.getItemID().equals( this.discountDb.getItemId() );
     }
 
-    /*
+    /**
     * This method is used to check for discount rules item id and item quantity.
     *
     * @param check contains current <code> ItemDTO </code> in the array list.
@@ -79,12 +79,12 @@ public class DiscountRule {
     private boolean discountQuantity (ItemDTO check){
         return ( check.getItemID().equals( discountDb.getItemId() ) && check.getQuantity() == this.discountDb.getQuantity() );
     }
-    /*
+    /**
     * This method is used to check for discount rule, running total and costumer id.
     *
     * @param logs contains the current sale log with all <code> ItemDTO </code> that is in the sale.
     *
-    * @param costumerID is a <code> String </code> of the costumer id.
+    * @param costumerId is a <code> String </code> of the costumer id.
     *
     * @return true if either <code> logs.getRunningTotal() == discountDb.getReduction() </code> or
     * <code> costumerId.equals( discountDb.getCostumerID() </code> is true.
@@ -93,10 +93,11 @@ public class DiscountRule {
         return ( logs.getRunningTotal() == discountDb.getReduction() || costumerId.equals( discountDb.getCostumerID() ));
     }
 
-    /*This method updates the current items price and this creating a new DTO.
-     *  @param check, current sale item
+    /**
+     *This method updates the current items price and this creating a new DTO.
+     *  @param sale, current sale item
      *
-     * @param item, is the item to be added
+     * @param check, is the item to be added
      *
      * @param count is the index to add the item to.
      * */
@@ -106,7 +107,7 @@ public class DiscountRule {
                 check.getItemID(),check.getVatRate(),check.getQuantity()));
     }
 
-    /*
+    /**
     * This method is used to get the discount database object from discount rule.
     *
     * @return <code> discountDb </code>.

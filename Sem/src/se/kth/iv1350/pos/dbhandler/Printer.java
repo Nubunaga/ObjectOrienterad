@@ -1,4 +1,5 @@
-/*This class is used to "print" and return change to the user of the program.
+/**
+ * This class is used to "print" and return change to the user of the program.
 * @ Author Netanel Avraham Eklind*/
 
 package se.kth.iv1350.pos.dbhandler;
@@ -7,17 +8,19 @@ import se.kth.iv1350.pos.model.Receipt;
 
 public class Printer {
     private Receipt receipt;
-    // constructor, blank
+    /**
+     * constructor, blank, to be used if a object is needed accessed without the parameters*/
     public Printer(){
 
     }
-    /*Constructor that creates the object printer
+    /**Constructor that creates the object printer
 
     * @param receipt contains all the total sale DTO in one object. */
     public Printer(Receipt receipt){
         this.receipt = receipt;
     }
-    /*This method calculates the change for the costumer.
+    /**
+     * This method calculates the change for the costumer.
 
     * @param receipt withs contains the total cost and payment.
 

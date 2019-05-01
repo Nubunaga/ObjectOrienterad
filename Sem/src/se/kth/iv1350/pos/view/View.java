@@ -1,8 +1,7 @@
-/*The se.kth.iv1350.pos.view class that is presented here is a user interface class that takes input by the user and show
+/**The se.kth.iv1350.pos.view class that is presented here is a user interface class that takes input by the user and show
 output as return. This is to keep a good structure and handling for the programmer and user.
 * @ Author: Netanel Avraham Eklind*/
-// studentrekrytering @kth.se
-//cv och personligt brev.
+
 
 
 package se.kth.iv1350.pos.view;
@@ -20,17 +19,21 @@ public class View {
   private Scanner in = new Scanner(System.in);
   private  Controller controller;
 
-  // Constructor for the View object,blank.
+  /** Constructor for the View object,blank.*/
   public View(){
 
     }
-  // Constructor for the View object.
+
+    /** Constructor for the View object.
+     *
+     * @param controller
+     */
   public View(Controller controller){
 
       this.controller = controller;
     }
 
-    /*
+    /**
     * The method runFakeSale purpose is to start the "user interface" for the user of this program and takes command
     * as inputs from the user to initialize different part of the program.
     * @ param there is no parameters in this method, it takes input directly from the user.
@@ -72,7 +75,7 @@ public class View {
         }
       }
     }
-/*
+/**
 * The method <code>addItem</code> purpose is to take command if the user enters a new sale, and allow the user to enter
 * an item id to add to the sale.under the code a <code> while </code> loop will continuously check for a command to end
 * the new sale. A <code> try / catch </code> exception handler is used to handle the "no item found".
@@ -89,7 +92,7 @@ public class View {
               }
             }
    }
-   /*The purpose of he method <code> addDiscount </code> is to give the user a input chanel for discount and receives a
+   /**The purpose of he method <code> addDiscount </code> is to give the user a input chanel for discount and receives a
    * input at <code> SaleDTO newSale = controller.enterCostumerID(in.next()) </code> for the costumer id in string form.
    * This will then send this information to check the discount rules if this is applicable.
    * */
@@ -98,10 +101,10 @@ public class View {
             SaleDTO newSale = controller.enterCostumerID(in.next());
             System.out.println("" + newSale);
    }
-   /*The method <code> addPayment </code> is to take an input from the user as a payment and receive back a object that
+   /**The method <code> addPayment </code> is to take an input from the user as a payment and receive back a object that
    * shows the change for the sale, if there is any. A <code> try /catch </code> is implemented if the person entering
    * the code enters wrong id, this will then restart the input with a message that says "wrong input". */
-    private void addPayment()throws IOException, InterruptedException {
+    private void addPayment(){
       try {
         Receipt change = controller.addPayment(in.nextFloat());
         clearScreen();
@@ -112,7 +115,7 @@ public class View {
 
       }
    }
-    /*a static method that only task is to clear a cmd command screen so the user only sees the Receipt.*/
+    /**a static method that only task is to clear a cmd command screen so the user only sees the Receipt.*/
   private static void clearScreen() throws IOException, InterruptedException {
     new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
   }

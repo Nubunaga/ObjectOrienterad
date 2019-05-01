@@ -1,3 +1,9 @@
+/**
+ * This class is used to test the <code> {@link se.kth.iv1350.pos.controller.Controller}</code> class
+ * for any bugs or unwanted events
+ * @author Netanel Avraham Eklind
+ * */
+
 package se.kth.iv1350.pos.controller;
 
 import org.hamcrest.CoreMatchers;
@@ -17,7 +23,7 @@ public class ControllerTest {
     private Controller controller;
 
     @Before
-    /*At the startup of the test program, create the necessary object and use them to test the controller class. */
+    /**At the startup of the test program, create the necessary object and use them to test the controller class. */
     public void setUp() throws Exception {
     inventory = new Inventory(inventoryDb);
     register = new Register(inventory,new ExternalAccountingSystem());
@@ -25,7 +31,7 @@ public class ControllerTest {
     }
 
     @After
-    /*This is used to declare all the object as null so there is no conflict when the program is "live"*/
+    /**This is used to declare all the object as null so there is no conflict when the program is "live"*/
     public void tearDown() throws Exception {
         inventoryDb = null;
         inventory = null;
@@ -34,20 +40,20 @@ public class ControllerTest {
     }
 
     @Test
-    /*Test if after the new Sale signal is sent, that a object is created.*/
+    /**Test if after the new Sale signal is sent, that a object is created.*/
     public void startNewSale() {
         controller.startNewSale();
         Assert.assertNotNull("The object sale is created",controller.getSale());
     }
 
     @Test
-    /*Check if add item, correct, returns sale information correctly.*/
+    /**Check if add item, correct, returns sale information correctly.*/
     public void testAddItem(){
         Assert.assertThat("SaleDTO is created",addSaleInstance(),CoreMatchers.isA(SaleDTO.class));
     }
 
     @Test
-    /*This test how the program reacts when there is no item found */
+    /**This test how the program reacts when there is no item found */
     public void testNullItem(){
         addSaleInstance();
         try{
@@ -58,14 +64,14 @@ public class ControllerTest {
     }
 
     @Test
-    /*Check if <code> addItem </code> return contains right information.*/
+    /**Check if <code> addItem </code> return contains right information.*/
     public void containsItem(){
     Assert.assertThat("The object contains items",addSaleInstance().getItem(),CoreMatchers.everyItem
             (CoreMatchers.instanceOf(ItemDTO.class)));
     }
 
     @Test
-    /*Check if the discount updates the current sale,with correct costumer id*/
+    /**Check if the discount updates the current sale,with correct costumer id*/
     public void testCostumerID(){
        SaleDTO test = addSaleInstance();
         Assert.assertNotSame(test.getRunningTotal()
@@ -73,7 +79,7 @@ public class ControllerTest {
 
     }
     @Test
-    /*test if the discount updates the current sale with wrong costumer id.*/
+    /**test if the discount updates the current sale with wrong costumer id.*/
     public void testWrongCostumerID(){
         addSaleInstance();
        SaleDTO testAfterDiscount = controller.enterCostumerID("abba");
@@ -82,14 +88,14 @@ public class ControllerTest {
 
     }
     @Test
-    /*Test if the <code> addPayment </code> executes correctly*/
+    /**Test if the <code> addPayment </code> executes correctly*/
     public void testObjectCash(){
         addSaleInstance();
         Receipt instance = controller.addPayment(60);
         Assert.assertThat("A receipt is created",instance,CoreMatchers.isA(Receipt.class));
     }
 
-    /*Used to instanceOfSale a add item or anything of this matter*/
+    /**Used to instanceOfSale a add item or anything of this matter*/
     private SaleDTO addSaleInstance(){
         controller.startNewSale();
         inventoryDb.getInventoryList().add(new Item(23.50f,"Milk","3536", 0.12f,10));
