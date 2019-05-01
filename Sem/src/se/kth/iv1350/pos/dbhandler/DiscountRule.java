@@ -47,7 +47,7 @@ public class DiscountRule {
                 count ++;
             }
                 if ( discountRunningTotal(logs,costumerId) ) {
-                    discount = 0.4f;
+                    discount = 0.6f;
                     return discount;
                 }
         } catch (Exception e) {

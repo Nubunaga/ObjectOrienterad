@@ -12,14 +12,16 @@ import java.util.ArrayList;
 
 public class Sale {
     ArrayList<ItemDTO> sale;
-    Calculator calc ;
-    DiscountRule dR ;
+    private Calculator calc ;
+    private   DiscountRule dR ;
+    private float discount;
 
    /**constructor that creates new object to be used by sale.*/
     public Sale(){
         this.calc = new Calculator();
         this.dR = new DiscountRule();
         this.sale = new ArrayList<>();
+        this.discount = 1;
     }
     /**
     * The method adds a new item to the <code> ArrayList <ItemDTO> sale</code>
@@ -36,7 +38,7 @@ public class Sale {
             if(newItem(item)){
             sale.add(item);
             }
-            return new SaleDTO(sale,calc.runningTotal(sale,1));
+            return new SaleDTO(sale,calc.runningTotal(sale,this.discount));
         }
         else{
             return null;
@@ -52,8 +54,8 @@ public class Sale {
     * @return the new sale information after calculation.
     * */
     public SaleDTO applySaleChange(String costumerID){
-        SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,1));
-        float discount = dR.calculateDiscount(sale,logs,costumerID);
+        SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,this.discount));
+         this.discount = dR.calculateDiscount(sale,logs,costumerID);
         return new SaleDTO(sale,calc.runningTotal(sale,discount));
     }
 
@@ -66,7 +68,7 @@ public class Sale {
     * as, item, cost of sale, payment.
     *  */
     public TotalSaleDTO endSale(CashPayment pay){
-        SaleDTO log = new SaleDTO(sale,calc.runningTotal(sale,1));
+        SaleDTO log = new SaleDTO(sale,calc.runningTotal(sale,this.discount));
         float totalCost = calc.calculateTotalCost(log);
         return new TotalSaleDTO(log,totalCost,pay);
     }
