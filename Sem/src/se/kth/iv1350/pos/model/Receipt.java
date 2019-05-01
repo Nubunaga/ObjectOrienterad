@@ -4,7 +4,6 @@
 package se.kth.iv1350.pos.model;
 
 public class Receipt {
-    // declare the variable for the class.
     TotalSaleDTO totalSale;
     float change;
     private String newLine = System.getProperty("line.separator"); // get the OS new line operation
@@ -32,6 +31,8 @@ public class Receipt {
     /*Overwrites method in "object" thus making the object <code> Receipt </code> printable.*/
     public String toString(){
         StringBuilder sb = new StringBuilder();
+        sb.append(String.format("TestStore"+newLine));
+        sb.append("Address Test street 23"+newLine);
         sb.append(String.format("Items:"+ newLine));
         sb.append(String.format(""+this.totalSale.getSale().getItem())+newLine);
         sb.append(String.format("Total cost: %.2f :-",this.totalSale.getTotalCost())+newLine);

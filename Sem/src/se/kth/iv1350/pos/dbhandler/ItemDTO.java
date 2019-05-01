@@ -5,7 +5,6 @@
 package se.kth.iv1350.pos.dbhandler;
 
 public class ItemDTO {
-    //declare the attributes.
     private float price;
     private String name;
     private String itemID;
@@ -20,12 +19,13 @@ public class ItemDTO {
         this.vatRate = vatRate;
         this.quantity = quantity;
     }
-    //To string to print the object.
+    /*Overrides the original object print method and allows the object
+    * to be printed correctly.*/
     public String toString(){
             StringBuilder sb = new StringBuilder();
-            sb.append(String.format("|"+this.name));
-            sb.append(String.format(",%.2f",this.price)+":-,");
-            sb.append(this.quantity+",");
+            sb.append(String.format("| Name: "+this.name));
+            sb.append(String.format(", Price: %.2f",this.price)+":-, Quantity: ");
+            sb.append(this.quantity+", Vat Rate :");
             sb.append(this.vatRate+"|"+newLine);
             return sb.toString();
     }
@@ -45,10 +45,8 @@ public class ItemDTO {
     public int getQuantity(){
             return quantity;
     }
+
     // the bellow method used to set different attributes of the object.
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
     public void setPrice(float price){
             this.price = price;
     }

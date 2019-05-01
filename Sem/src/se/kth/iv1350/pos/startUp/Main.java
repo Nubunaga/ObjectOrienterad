@@ -3,7 +3,8 @@
 * thereby allowing classes access to the operations needed to start.
 * @Author Netanel Avraham Eklind*/
 
-package se.kth.iv1350.pos.startUp;        // the package currently in
+// the package currently in
+package se.kth.iv1350.pos.startUp;
 
 /*Below follow the packages that are used by main*/
 import se.kth.iv1350.pos.controller.*;

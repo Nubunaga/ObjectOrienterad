@@ -9,7 +9,6 @@ import se.kth.iv1350.pos.dbhandler.ItemDTO;
 import se.kth.iv1350.pos.model.*;
 
 public class Controller {
-    // declare private attributes that is used by se.kth.iv1350.pos.controller
     private Inventory inventory;
     private Sale sale;
     private Register register;

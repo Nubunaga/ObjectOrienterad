@@ -11,11 +11,18 @@ public class Printer {
     public Printer(){
 
     }
-    //constructor, with Receipt class
+    /*Constructor that creates the object printer
+
+    * @param receipt contains all the total sale DTO in one object. */
     public Printer(Receipt receipt){
         this.receipt = receipt;
     }
-    // calculate and return the change to the user.
+    /*This method calculates the change for the costumer.
+
+    * @param receipt withs contains the total cost and payment.
+
+    * @return the object receipt with the change and all of the information to be shown to the costumer,
+    * */
     public Receipt showChange(Receipt receipt){
         receipt.setChange(receipt.getTotalSale().getTotalCost() - receipt.getTotalSale().getCashPayment().getPayment());
        return receipt;

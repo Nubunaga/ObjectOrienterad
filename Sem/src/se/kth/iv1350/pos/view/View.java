@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.util.*;
 
 public class View {
-  //declare needed variables.
   private Scanner in = new Scanner(System.in);
   private  Controller controller;
 
