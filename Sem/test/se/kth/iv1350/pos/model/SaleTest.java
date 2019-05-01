@@ -42,6 +42,15 @@ public class SaleTest {
     }
 
     @Test
+    /*Test that the item is not null*/
+    public void testAddItemNotNull(){
+        ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
+        salelog.add(item);
+        boolean instance = (salelog.get(0).equals(null));
+        Assert.assertFalse("there is an null in item",instance);
+    }
+
+    @Test
     /*test the add item method for multiple item, added at different times on the current salelog*/
     public void testNotNewItem(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
