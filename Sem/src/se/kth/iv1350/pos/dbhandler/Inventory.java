@@ -10,7 +10,7 @@ import se.kth.iv1350.pos.database.InventoryDb;
 
 
 public class Inventory {
-        InventoryDb inventoryDb;
+     private InventoryDb inventoryDb;
         /**
         * Constructor for the inventory object.
         * */
@@ -49,7 +49,7 @@ public class Inventory {
     *Goes through the current sale and updates the quantity och each item that have been sold, with the new quantity
     * in the database.
     *
-    * @param <code> totalSale </code> contains the entire current sale with items, payment and total cost.
+    * @param totalSale  contains the entire current sale with items, payment and total cost.
     * */
     public void updateInventory(TotalSaleDTO totalSale){
 
@@ -73,9 +73,9 @@ public class Inventory {
     /**
     * checks if <code> item.getItemID().equals(update.getItemID() </code> is the same.
     *
-    * @param update is current database item
+    * @param itemInDatabase is current database item
     *
-    * @param item is the current sale item
+    * @param itemInSale is the current sale item
     *
     * @return true if they match. */
     private boolean equals(Item itemInDatabase,ItemDTO itemInSale){
@@ -85,9 +85,9 @@ public class Inventory {
     /**
     * Calculate new amount of item to be set.
     *
-    * @param update is current database item.
+    * @param itemInDatabase is current database item.
     *
-    * @param item is the current sale item
+    * @param itemInSale is the current sale item
     *
     * @return a value after <code> update.getQuantity()-item.getQuantity() </code>
     * */

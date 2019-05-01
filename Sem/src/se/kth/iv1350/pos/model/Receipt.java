@@ -4,7 +4,7 @@
 package se.kth.iv1350.pos.model;
 
 public class Receipt {
-    TotalSaleDTO totalSale;
+    private TotalSaleDTO totalSale;
     float change;
     private String newLine = System.getProperty("line.separator"); // get the OS new line operation
 

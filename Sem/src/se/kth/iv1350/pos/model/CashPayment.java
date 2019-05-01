@@ -3,7 +3,7 @@
 package se.kth.iv1350.pos.model;
 
 public class CashPayment {
-    float payment;
+    private float payment;
     public CashPayment(float payment){
         this.payment = payment;
     }

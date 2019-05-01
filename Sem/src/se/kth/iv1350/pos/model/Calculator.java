@@ -7,7 +7,7 @@ import se.kth.iv1350.pos.dbhandler.ItemDTO;
 
 import java.util.ArrayList;
 
-public class Calculator {
+ class Calculator {
     /**Constructor blank, for usage to access different part of the class.*/
     Calculator() {
 
