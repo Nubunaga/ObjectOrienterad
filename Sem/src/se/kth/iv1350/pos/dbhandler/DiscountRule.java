@@ -34,20 +34,18 @@ public class DiscountRule {
     **/
     public float calculateDiscount(ArrayList<ItemDTO> sale, SaleDTO logs, String costumerId) {
         try {
-            float discount;
-            int count = 0;
+            float discount = 1;
             for (ItemDTO check : sale) {
                 if ( discountItemID(check) ) {
-                   addNewPrice(sale,check,count,0.9f);
+                discount -= 0.01;
                 }
                 if ( discountQuantity(check) ){
 
-                    addNewPrice(sale,check,count,0.7f);
+                    discount -= .02f;
                 }
-                count ++;
             }
                 if ( discountRunningTotal(logs,costumerId) ) {
-                    discount = 0.6f;
+                    discount -= 0.3f;
                     return discount;
                 }
         } catch (Exception e) {
@@ -91,20 +89,6 @@ public class DiscountRule {
     * */
     private boolean discountRunningTotal(SaleDTO logs,String costumerId){
         return ( logs.getRunningTotal() == discountDb.getReduction() || costumerId.equals( discountDb.getCostumerID() ));
-    }
-
-    /**
-     *This method updates the current items price and this creating a new DTO.
-     *  @param sale, current sale item
-     *
-     * @param check, is the item to be added
-     *
-     * @param count is the index to add the item to.
-     * */
-    private void addNewPrice(ArrayList<ItemDTO> sale,ItemDTO check,int count, float discount){
-        sale.remove(count);
-        sale.add(count,new ItemDTO((check.getPrice()*discount),check.getName(),
-                check.getItemID(),check.getVatRate(),check.getQuantity()));
     }
 
     /**

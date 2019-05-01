@@ -47,7 +47,7 @@ public class Sale {
 
     /**This method checks for the discount rules and updates the sale accordingly.
     *
-    * @param costumerID takes the id and is used in <code>
+    * @param costumerID takes the id and is used in <code>0
     * R.calculateDiscount(sale,logs,costumerID </code> to update discount with or
     * without the correct id.
     *
@@ -55,7 +55,7 @@ public class Sale {
     * */
     public SaleDTO applySaleChange(String costumerID){
         SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,this.discount));
-         this.discount = dR.calculateDiscount(sale,logs,costumerID);
+        this.discount = dR.calculateDiscount(sale,logs,costumerID);
         return new SaleDTO(sale,calc.runningTotal(sale,discount));
     }
 

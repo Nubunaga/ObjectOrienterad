@@ -8,26 +8,38 @@ public class DiscountDb {
     private int quantity ;
     private String costumerID;
     private float reduction;
-    // constructor
+    /**Constructor for the discount database object.*/
     public DiscountDb() {
         this.itemId = "3536";
         this.quantity = 3;
         this.reduction = 0.3f;
         this.costumerID = "abba";
     }
-    // get the ID
+    /**
+     * Gets the costumer id
+     * @return costumerID   is the id in the database
+     * */
     public String getCostumerID() {
         return costumerID;
     }
-    // get the item
+    /**
+     * Gets the item id
+     * @return itemID    contains the item id in database
+     * */
     public String getItemId() {
         return itemId;
     }
-    // get the quantity
+    /**
+     * get the quantity of the object
+     * @retun quantity    contains the quantity of the rule
+     * */
     public int getQuantity() {
         return quantity;
     }
-    // get the reduction of total sale.
+    /**
+     * gets the reduction check for the discount database
+     * @return reduction    contain that specific rule
+     * */
     public float getReduction() {
         return reduction;
     }
