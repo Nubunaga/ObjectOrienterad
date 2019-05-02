@@ -15,7 +15,8 @@ public class InventoryDb   {
     this.inventoryList = new ArrayList<Item>();
     }
 
-    /**Create "new" database with different items to find*/
+    /**Create "new" database with different items to find
+     * @throws Exception to print the file, this is thrown*/
     public void database() throws Exception{
         inventoryList.add(new Item(23.50f,"Milk","3536", 0.12f,10));
         inventoryList.add(new Item(24.95f,"Butter","3537", 0.12f,15));
@@ -28,7 +29,8 @@ public class InventoryDb   {
         printFile();
     }
 
-    /**Get the entire database list.*/
+    /**Get the entire database list.
+     * @return inventoryList*/
     public ArrayList<Item> getInventoryList() {
         return inventoryList;
     }

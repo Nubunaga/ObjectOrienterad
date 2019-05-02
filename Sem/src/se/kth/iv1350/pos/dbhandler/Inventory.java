@@ -13,6 +13,7 @@ public class Inventory {
      private InventoryDb inventoryDb;
         /**
         * Constructor for the inventory object.
+         * @param  inventoryDb is the database for items.
         * */
     public Inventory(InventoryDb inventoryDb){
         this.inventoryDb = inventoryDb;
@@ -25,9 +26,9 @@ public class Inventory {
      *
     * @param itemID is a <code> String </code> with information about the searched for item in the system.
     *
-    * @param quantity contains a <code> int <code> with information on the amount of items to look for.
+    * @param quantity contains a <code> int </code> with information on the amount of items to look for.
     *
-    * @return an <code> ItemDTO </code> object if an item is found with that specific id
+    * @return an <code> ItemDTO </code> object if an item is found with that specific id.
     * <code> else </code> a null is returned that is used at view to inform that a item is not found.
     *  */
     public ItemDTO checkValidation (String itemID,int quantity) {

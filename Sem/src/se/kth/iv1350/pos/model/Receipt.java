@@ -16,7 +16,7 @@ public class Receipt {
         this.change = 0;
     }
 
-    /**Gets the total sale object from <code> Receipt </object> to be used by the program
+    /**Gets the total sale object from <code> Receipt </code> to be used by the program
     * @return totalSale with the sale information.*/
     public TotalSaleDTO getTotalSale() {
         return totalSale;

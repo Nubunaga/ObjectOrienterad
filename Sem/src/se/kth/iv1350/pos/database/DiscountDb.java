@@ -31,7 +31,7 @@ public class DiscountDb {
     }
     /**
      * get the quantity of the object
-     * @retun quantity    contains the quantity of the rule
+     * @return  quantity    contains the quantity of the rule
      * */
     public int getQuantity() {
         return quantity;

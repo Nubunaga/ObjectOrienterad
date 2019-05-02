@@ -21,7 +21,7 @@ public class DiscountRule {
     * The method <code> calculateDiscount </code> calculates a new price following different discount rules provided by
     * a external database.
     *
-    * @param sale, is a <code> ArrayList<ItemDTO> </code> that contains the
+    * @param sale, is a <code> ArrayList </code> that contains the
     *  current sale.
     *
     * @param logs, is a log of all the sale in the current sale that is used

@@ -26,7 +26,7 @@ public class View {
 
     /** Constructor for the View object.
      *
-     * @param controller
+     * @param controller contains the object controller
      */
   public View(Controller controller){
 
@@ -36,8 +36,8 @@ public class View {
     /**
     * The method runFakeSale purpose is to start the "user interface" for the user of this program and takes command
     * as inputs from the user to initialize different part of the program.
-    * @ param there is no parameters in this method, it takes input directly from the user.
-    * @ return there is no return in this program. ,
+     * @throws IOException that is an input output exception
+     * @throws InterruptedException that is handled when and interruption is done.
     * */
     public void runFakeSale()throws IOException, InterruptedException {
       for (;;) {

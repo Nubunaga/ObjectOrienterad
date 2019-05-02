@@ -19,7 +19,10 @@ public class Controller {
     }
     /**
     * Constructor for object controller
-    * @param  inventory  and reg are 2 object created in main
+    * @param  inventory  and reg are 2 object created in main,
+     *                    inventory and inventory db
+     *
+     * @param register  contains register
     */
     public Controller(Inventory inventory,Register register){
     this.inventory = inventory;
@@ -76,7 +79,7 @@ public class Controller {
     /**
     * Gets the inventory object to be used in the public interface.
     *
-    * @return the current <code>Inventory</code> object, <code> null</code> or object.
+    * @return inventory the current <code>Inventory</code> object, <code> null</code> or object.
     * */
     public Inventory getInventory() {
         return inventory;
@@ -84,7 +87,7 @@ public class Controller {
 
     /**
     * Gets the register object to be used in the public interface
-    * @return the current <code>Register</code> object that is associated to controller.
+    * @return register the current <code>Register</code> object that is associated to controller.
     * */
     public Register getRegister() {
         return register;
@@ -92,7 +95,7 @@ public class Controller {
 
     /**
     * Get the register object to be used in the public interface
-    * @ return the current <code>Sale</code> object that is associated with controller
+    * @return sale the current <code>Sale</code> object that is associated with controller
     * */
     public Sale getSale() {
         return sale;

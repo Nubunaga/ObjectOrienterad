@@ -24,13 +24,13 @@ public class Sale {
         this.discount = 1;
     }
     /**
-    * The method adds a new item to the <code> ArrayList <ItemDTO> sale</code>
+    * The method adds a new item to the <code> ArrayList </code> sale
     * and increase the sale information.It updates every time a item is added.
     *
     * @param item is a object of <code> ItemDTO </code> that contains all the information about
     * an item.
     *
-    * @return a <code> SaleDTO </code> that contains all the information about the current sale.
+    * @return SaleDTO, a <code> SaleDTO </code> that contains all the information about the current sale.
     * This creates a new DTO each time a new item is added.
     * */
     public SaleDTO addToSale(ItemDTO item){

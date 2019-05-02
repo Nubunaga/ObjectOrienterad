@@ -15,7 +15,9 @@ import se.kth.iv1350.pos.view.*;
 
 public class Main {
     /**The main method will startup different <code> constructors </code> that is crucial to the business program, thus
-    * this method is only used to start the program then never again.  */
+    * this method is only used to start the program then never again.
+     * @param args is the starting comment if one want to run with one.
+     * @throws Exception is to run the database and view that handle exception.*/
     public static void main(String[] args)throws Exception{
 
         new DiscountDb();
