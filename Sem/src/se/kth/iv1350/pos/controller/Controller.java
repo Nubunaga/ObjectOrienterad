@@ -6,8 +6,11 @@
 package se.kth.iv1350.pos.controller;
 /** import packages that are in association to this package*/
 import se.kth.iv1350.pos.dbhandler.Inventory;
+import se.kth.iv1350.pos.dbhandler.Item;
 import se.kth.iv1350.pos.dbhandler.ItemDTO;
 import se.kth.iv1350.pos.model.*;
+
+import java.util.ArrayList;
 
 public class Controller {
     private Inventory inventory;
@@ -81,23 +84,23 @@ public class Controller {
     *
     * @return inventory the current <code>Inventory</code> object, <code> null</code> or object.
     * */
-    public Inventory getInventory() {
-        return inventory;
+    public ArrayList<Item> checkInventory() {
+        return inventory.getInventoryDb().getInventoryList();
     }
 
     /**
     * Gets the register object to be used in the public interface
     * @return register the current <code>Register</code> object that is associated to controller.
     * */
-    public Register getRegister() {
-        return register;
+    public float checkRegister() {
+        return register.getExternalAccountingSystem().getRegisterMoney();
     }
 
     /**
     * Get the register object to be used in the public interface
     * @return sale the current <code>Sale</code> object that is associated with controller
     * */
-    public Sale getSale() {
+    Sale getSale() {
         return sale;
     }
 }

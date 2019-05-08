@@ -57,7 +57,7 @@ public class View {
 
             /*Check inventory*/
           case "inventory":
-            for (Item check : controller.getInventory().getInventoryDb().getInventoryList()) {
+            for (Item check : controller.checkInventory()) {
               System.out.println("" + check);
             }
               break;
@@ -65,7 +65,7 @@ public class View {
             /*Register check*/
           case "register":
 
-            System.out.println(controller.getRegister().getExternalAccountingSystem().getRegisterMoney());
+            System.out.println(controller.checkRegister());
 
             break;
             default:
@@ -75,6 +75,7 @@ public class View {
         }
       }
     }
+
 /**
 * The method <code>addItem</code> purpose is to take command if the user enters a new sale, and allow the user to enter
 * an item id to add to the sale.under the code a <code> while </code> loop will continuously check for a command to end
