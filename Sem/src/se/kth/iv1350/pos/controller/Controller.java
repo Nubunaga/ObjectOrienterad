@@ -5,9 +5,7 @@
 
 package se.kth.iv1350.pos.controller;
 /** import packages that are in association to this package*/
-import se.kth.iv1350.pos.dbhandler.Inventory;
-import se.kth.iv1350.pos.dbhandler.Item;
-import se.kth.iv1350.pos.dbhandler.ItemDTO;
+import se.kth.iv1350.pos.dbhandler.*;
 import se.kth.iv1350.pos.model.*;
 
 import java.util.ArrayList;
@@ -48,8 +46,10 @@ public class Controller {
     *
     * @return saleInfo, object is returned with object and displayed if it contains a object,
     * if <code> null </code> then a exception will be thrown in view.
+     *
+     * @throws InvalidIDException           checked <code>Exception</code> that is thrown if no item found.
     * */
-    public SaleDTO addItem(String itemID, int quantity){
+    public SaleDTO addItem(String itemID, int quantity)throws InvalidIDException {
         ItemDTO item = inventory.checkValidation(itemID,quantity);
         return sale.addToSale(item);
     }
@@ -80,17 +80,17 @@ public class Controller {
     }
 
     /**
-    * Gets the inventory object to be used in the public interface.
+    * checks the inventory for what items in store.
     *
-    * @return inventory the current <code>Inventory</code> object, <code> null</code> or object.
+    * @return <code>ArrayList</code> containing the inventory's items.
     * */
     public ArrayList<Item> checkInventory() {
         return inventory.getInventoryDb().getInventoryList();
     }
 
     /**
-    * Gets the register object to be used in the public interface
-    * @return register the current <code>Register</code> object that is associated to controller.
+    * checks the register for current amount.
+    * @return the current amount of cash in the register, in <code>float</code>
     * */
     public float checkRegister() {
         return register.getExternalAccountingSystem().getRegisterMoney();

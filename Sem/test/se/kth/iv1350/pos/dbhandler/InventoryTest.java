@@ -31,24 +31,27 @@ public class InventoryTest {
 
     @Test
     /**Test the validation system for the inventory by looking for an instance of ItemDTO*/
-    public void validationTest(){
+    public void validationTest()throws InvalidIDException{
         Assert.assertThat("An ItemDTO is created", inventory.checkValidation("3536",3),
                 CoreMatchers.isA(ItemDTO.class));
     }
     @Test
     /**test if the item DTO returned is the same as the one asked for*/
-    public void ItemTest(){
+    public void ItemTest()throws InvalidIDException{
         ItemDTO item = inventory.checkValidation("3536",3);
         boolean checker = (item.getItemID().equals("3536"))?true:false;
         Assert.assertTrue("This is the right item",checker);
     }
 
     @Test
-    /**Test for a wrong itemID search*/
+    /**Test for a wrong ItemID result in a <code> throw exception</code>*/
     public void ItemIDFail(){
-        ItemDTO item = inventory.checkValidation("4000",3);
-        boolean checker = (item == null)?true:false;
-        Assert.assertTrue("no item found",checker);
+        try {
+        inventory.checkValidation("4000",1);
+        }
+        catch (InvalidIDException e){
+            Assert.assertThat("There is nothing thrown in inventory", e, CoreMatchers.isA(InvalidIDException.class));
+        }
     }
 
     @Test

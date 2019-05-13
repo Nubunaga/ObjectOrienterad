@@ -48,31 +48,31 @@ public class ControllerTest {
 
     @Test
     /**Check if add item, correct, returns sale information correctly.*/
-    public void testAddItem(){
+    public void testAddItem()throws InvalidIDException{
         Assert.assertThat("SaleDTO is created",addSaleInstance(),CoreMatchers.isA(SaleDTO.class));
     }
 
     @Test
     /**This test how the program reacts when there is no item found */
-    public void testNullItem(){
+    public void testNullItem()throws InvalidIDException{
         addSaleInstance();
         try{
             controller.addItem("3562",1);}
-        catch (NullPointerException e ){
-        Assert.assertThat("There is no item",e,CoreMatchers.isA(NullPointerException.class));
+        catch (InvalidIDException e ){
+        Assert.assertTrue("there is a wrong message", e.getMessage().contains(e.getNoItemFound()));
         }
     }
 
     @Test
     /**Check if <code> addItem </code> return contains right information.*/
-    public void containsItem(){
+    public void containsItem()throws InvalidIDException{
     Assert.assertThat("The object contains items",addSaleInstance().getItem(),CoreMatchers.everyItem
             (CoreMatchers.instanceOf(ItemDTO.class)));
     }
 
     @Test
     /**Check if the discount updates the current sale,with correct costumer id*/
-    public void testCostumerID(){
+    public void testCostumerID()throws InvalidIDException{
        SaleDTO test = addSaleInstance();
         Assert.assertNotSame(test.getRunningTotal()
                 ,controller.enterCostumerID("abba").getRunningTotal());
@@ -80,7 +80,7 @@ public class ControllerTest {
     }
     @Test
     /**test if the discount updates the current sale with wrong costumer id.*/
-    public void testWrongCostumerID(){
+    public void testWrongCostumerID()throws InvalidIDException{
         addSaleInstance();
        SaleDTO testAfterDiscount = controller.enterCostumerID("abba");
        SaleDTO testWrongID = controller.enterCostumerID("sara");
@@ -89,14 +89,14 @@ public class ControllerTest {
     }
     @Test
     /**Test if the <code> addPayment </code> executes correctly*/
-    public void testObjectCash(){
+    public void testObjectCash()throws InvalidIDException{
         addSaleInstance();
         Receipt instance = controller.addPayment(60);
         Assert.assertThat("A receipt is created",instance,CoreMatchers.isA(Receipt.class));
     }
 
     /**Used to instanceOfSale a add item or anything of this matter*/
-    private SaleDTO addSaleInstance(){
+    private SaleDTO addSaleInstance()throws InvalidIDException{
         controller.startNewSale();
         inventoryDb.getInventoryList().add(new Item(23.50f,"Milk","3536", 0.12f,10));
         inventoryDb.getInventoryList().add(new Item(24.95f,"Butter","3537", 0.12f,15));

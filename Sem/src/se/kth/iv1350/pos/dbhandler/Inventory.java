@@ -30,20 +30,20 @@ public class Inventory {
     *
     * @return an <code> ItemDTO </code> object if an item is found with that specific id.
     * <code> else </code> a null is returned that is used at view to inform that a item is not found.
+     *
+     * @throws InvalidIDException   checked exception that throws if there is no item Id found.
     *  */
-    public ItemDTO checkValidation (String itemID,int quantity) {
-        try{
-        for (Item checker : inventoryDb.getInventoryList()) {
-            if (itemID.equals(checker.getItemID())) {
-                return new ItemDTO(checker.getPrice(),checker.getName(),
-                        checker.getItemID(),checker.getVatRate(),quantity);
+    public ItemDTO checkValidation (String itemID,int quantity)throws InvalidIDException{
+        if (itemID.equals("1337")){
+                throw  new ConnectionFailureException();
+        }
+            for (Item checker : inventoryDb.getInventoryList()) {
+                if (itemID.equals(checker.getItemID())) {
+                    return new ItemDTO(checker.getPrice(), checker.getName(),
+                            checker.getItemID(), checker.getVatRate(), quantity);
+                }
             }
-        }
-        }
-        catch (Exception e){
-           System.out.println("Lost connection to InvDatabase ");
-        }
-        return null;
+        throw new  InvalidIDException(itemID);
     }
 
     /**
