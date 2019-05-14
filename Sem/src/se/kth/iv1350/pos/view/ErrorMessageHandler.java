@@ -1,6 +1,6 @@
 /**
  * The class that prints the error to the cashier.
- * @Author Netanel Avraham Eklind
+ * The following line of code have been borrowed from the course book
  * */
 
 package se.kth.iv1350.pos.view;

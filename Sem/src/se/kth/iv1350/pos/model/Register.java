@@ -6,9 +6,13 @@ import se.kth.iv1350.pos.dbhandler.ExternalAccountingSystem;
 import se.kth.iv1350.pos.dbhandler.Inventory;
 import se.kth.iv1350.pos.dbhandler.Printer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Register {
     private ExternalAccountingSystem externalAccountingSystem;
     private Inventory inv;
+    private List<RevenueObserver> revenueObserverList = new ArrayList<>();
     /**A blank constructor that can be used to access the methods in this class.*/
     public Register(){
 
@@ -39,11 +43,30 @@ public class Register {
     private Receipt printReceipt(TotalSaleDTO totalSale){
         Receipt receipt = new Receipt(totalSale);
         Printer printer = new Printer(receipt);
+        notifyObserver(totalSale);
         return printer.showChange(receipt);
     }
 
     private void updateExternalSystem(TotalSaleDTO totalSale){
         inv.updateInventory(totalSale);
         externalAccountingSystem.logSale(totalSale);
+    }
+
+    private void notifyObserver(TotalSaleDTO totalSaleDTO){
+        revenueObserverList.get(0).newRevenue(totalSaleDTO);
+    }
+    /**
+     * Takes a whole list of <code>{@link RevenueObserver}</code> and register them one by one
+     *
+     * @param revObs                        contain all the current <code>{@link RevenueObserver}</code>
+     * */
+    public void addObservers(List<RevenueObserver> revObs){
+        for (RevenueObserver rev : revObs){
+            addRevenueObserver(rev);
+        }
+    }
+
+    private void addRevenueObserver(RevenueObserver revenueObserver){
+        revenueObserverList.add(revenueObserver);
     }
 }

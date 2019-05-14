@@ -20,8 +20,8 @@ import java.util.*;
 public class View  {
     private Scanner in = new Scanner(System.in);
     private Controller controller;
-    ErrorLogHandler errorLogHandler;
-    ErrorMessageHandler errorMessageHandler;
+    private ErrorLogHandler errorLogHandler;
+    private ErrorMessageHandler errorMessageHandler;
     /**
      * Constructor for the View object,blank.
      */
@@ -38,6 +38,7 @@ public class View  {
         this.errorLogHandler = new ErrorLogHandler();
         this.errorMessageHandler = new ErrorMessageHandler();
         this.controller = controller;
+        controller.addRevenueObserver(new TotalRevenueView());
     }
 
     /**

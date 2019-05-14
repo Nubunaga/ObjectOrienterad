@@ -22,6 +22,7 @@ public class RegisterTest {
     Register register;
     Calculator calculator;
 
+
     @Before
     public void setUp() throws Exception {
     register = new Register(new Inventory(new InventoryDb()),new ExternalAccountingSystem());

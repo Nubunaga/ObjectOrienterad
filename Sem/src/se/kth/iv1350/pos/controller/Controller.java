@@ -9,11 +9,13 @@ import se.kth.iv1350.pos.dbhandler.*;
 import se.kth.iv1350.pos.model.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     private Inventory inventory;
     private Sale sale;
     private Register register;
+    private List<RevenueObserver> revenueObserversList = new ArrayList<>();
     /**a blank constructor if only the class wants to be accessed.*/
     public Controller(){
 
@@ -76,6 +78,7 @@ public class Controller {
     public Receipt addPayment(float amountPaid){
         CashPayment payment = new CashPayment(amountPaid);
         TotalSaleDTO totalCost = sale.endSale(payment);
+        register.addObservers(revenueObserversList);
          return register.addToRegister(totalCost);
     }
 
@@ -102,5 +105,9 @@ public class Controller {
     * */
     Sale getSale() {
         return sale;
+    }
+
+    public void addRevenueObserver(RevenueObserver revenueObserver){
+        revenueObserversList.add(revenueObserver);
     }
 }

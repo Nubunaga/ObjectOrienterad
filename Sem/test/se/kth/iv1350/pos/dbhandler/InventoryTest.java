@@ -77,5 +77,14 @@ public class InventoryTest {
             }
         }
     }
-
+    @Test
+    /**Test that a thrown is made if the "error" code is sent*/
+    public void testThrowConnectionFaliure()throws InvalidIDException{
+        try {
+        inventory.checkValidation("1337",3);
+        }
+        catch (ConnectionFailureException connection){
+            Assert.assertThat("There is no thrown",connection,CoreMatchers.isA(ConnectionFailureException.class));
+        }
+    }
 }

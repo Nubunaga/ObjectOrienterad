@@ -14,6 +14,7 @@ import org.junit.Test;
 import se.kth.iv1350.pos.database.InventoryDb;
 import se.kth.iv1350.pos.dbhandler.*;
 import se.kth.iv1350.pos.model.*;
+import se.kth.iv1350.pos.view.View;
 
 
 public class ControllerTest {
@@ -21,6 +22,7 @@ public class ControllerTest {
     private Inventory inventory;
     private Register register;
     private Controller controller;
+    private View view;
 
     @Before
     /**At the startup of the test program, create the necessary object and use them to test the controller class. */
@@ -28,6 +30,7 @@ public class ControllerTest {
     inventory = new Inventory(inventoryDb);
     register = new Register(inventory,new ExternalAccountingSystem());
     controller = new Controller(inventory,register);
+    view = new View(controller);
     }
 
     @After
@@ -60,6 +63,19 @@ public class ControllerTest {
             controller.addItem("3562",1);}
         catch (InvalidIDException e ){
         Assert.assertTrue("there is a wrong message", e.getMessage().contains(e.getNoItemFound()));
+        }
+    }
+
+    @Test
+    /**Check if there is a lost to database*/
+    public void testLostConnection(){
+        try {
+            controller.addItem("1337", 1);
+        }
+        catch (ConnectionFailureException e){
+            Assert.assertTrue("There is no good handling of crash",e.getMessage().equals("There is no connection to database"));
+        } catch (InvalidIDException e) {
+            Assert.fail("This is the wrong throw");
         }
     }
 
