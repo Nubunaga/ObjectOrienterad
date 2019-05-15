@@ -1,8 +1,8 @@
 /**
  * This class is used to log the <code> Exception </code> cause in a stack trace so an programmer can find
  * the cause of the problem.
- *
- * The following line of code have been borrowed from the course book
+ * The following line of code have been inspired by the course book about object
+ *  oriented development
  * */
 
 package se.kth.iv1350.pos.util;

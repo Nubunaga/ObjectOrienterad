@@ -1,6 +1,7 @@
 /**
  * The class that prints the error to the cashier.
- * The following line of code have been borrowed from the course book
+ * The following line of code have been inspired by the course book about object
+ * oriented development
  * */
 
 package se.kth.iv1350.pos.view;

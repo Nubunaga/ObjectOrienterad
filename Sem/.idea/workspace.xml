@@ -19,13 +19,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/dbhandler/Matcher.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorMessageHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="3" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/util/ErrorLogHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+              <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -131,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Tester/ViewTest.java" />
         <option value="$PROJECT_DIR$/src/Tester/ControllerTest.java" />
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/iv1350/view/View.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
@@ -153,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/model/CashPayment.java" />
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/model/Receipt.java" />
         <option value="$PROJECT_DIR$/test/se/kth/iv1350/pos/dbhandler/InvalidIDExceptionTest.java" />
-        <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorMessageHandler.java" />
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorLogHandler.java" />
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/model/RevenueObserver.java" />
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/controller/DataConnectionFaliureException.java" />
@@ -182,6 +201,8 @@
         <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/model/Sale.java" />
         <option value="$PROJECT_DIR$/test/se/kth/iv1350/pos/dbhandler/DiscountRuleTest.java" />
         <option value="$PROJECT_DIR$/test/se/kth/iv1350/pos/dbhandler/PrinterTest.java" />
+        <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorMessageHandler.java" />
+        <option value="$PROJECT_DIR$/src/se/kth/iv1350/pos/util/ErrorLogHandler.java" />
       </list>
     </option>
   </component>
@@ -728,29 +749,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorMessageHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ErrorLog.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/util/ErrorLogHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="50" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/view/TotalRevenueView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1013,6 +1013,23 @@
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/view/ErrorMessageHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/se/kth/iv1350/pos/util/ErrorLogHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
