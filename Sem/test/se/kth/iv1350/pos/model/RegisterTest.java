@@ -37,11 +37,11 @@ public class RegisterTest {
     /**Test that a receipt is created*/
     public void testReceipt (){
         ItemDTO bought =  new ItemDTO(23.5f,"Milk","3536",0.12f,1);
-        ArrayList<ItemDTO> sale = new ArrayList<ItemDTO>();
+        ArrayList<ItemDTO> sale = new ArrayList<>();
         sale.add(bought);
         SaleDTO saleDTO = new SaleDTO(sale,calculator.runningTotal(sale,1));
         TotalSaleDTO totalSaleDTO = new TotalSaleDTO(saleDTO,calculator.calculateTotalCost(saleDTO),new CashPayment(250));
-        Assert.assertThat("There is a object created",register.addToRegister(totalSaleDTO), CoreMatchers.isA(Receipt.class));
+        Assert.assertThat("There is a object created",new Receipt(totalSaleDTO), CoreMatchers.isA(Receipt.class));
     }
 
     @Test

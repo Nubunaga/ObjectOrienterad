@@ -8,12 +8,10 @@ package se.kth.iv1350.pos.view;
 // packages that are associated to se.kth.iv1350.pos.view package.
 import se.kth.iv1350.pos.controller.Controller;
 import se.kth.iv1350.pos.controller.DataConnectionFaliureException;
-import se.kth.iv1350.pos.dbhandler.ConnectionFailureException;
 import se.kth.iv1350.pos.dbhandler.InvalidIDException;
 import se.kth.iv1350.pos.dbhandler.Item;
 import se.kth.iv1350.pos.model.Receipt;
 import se.kth.iv1350.pos.model.SaleDTO;
-import se.kth.iv1350.pos.util.ErrorLogHandler;
 
 // utility and io classes that are used in this class
 import java.io.IOException;
@@ -22,13 +20,11 @@ import java.util.*;
 public class View  {
     private Scanner in = new Scanner(System.in);
     private Controller controller;
-    private ErrorLogHandler errorLogHandler;
     private ErrorMessageHandler errorMessageHandler;
     /**
      * Constructor for the View object,blank.
      */
     public View() {
-
     }
 
     /**
@@ -37,7 +33,6 @@ public class View  {
      * @param controller contains the object controller
      */
     public View(Controller controller)throws IOException {
-        this.errorLogHandler = new ErrorLogHandler();
         this.errorMessageHandler = new ErrorMessageHandler();
         this.controller = controller;
         controller.addRevenueObserver(new TotalRevenueView());

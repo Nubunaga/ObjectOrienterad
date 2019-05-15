@@ -11,6 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import se.kth.iv1350.pos.database.InventoryDb;
 import se.kth.iv1350.pos.model.*;
+import se.kth.iv1350.pos.view.View;
+
+
+import java.io.IOException;
 
 public class PrinterTest {
     private Printer printer;
@@ -31,16 +35,5 @@ public class PrinterTest {
     @After
     public void tearDown() throws Exception {
         printer = null;
-    }
-
-    @Test
-    /**Test the calculation of the change*/
-    public void testChangeCalculation(){
-        Sale sale = new Sale();
-        sale.addToSale(new ItemDTO(23.5f,"Milk","3536",0.12f,3));
-        TotalSaleDTO totalSaleDTO = sale.endSale(new CashPayment(20));
-       Receipt receipt= register.addToRegister(totalSaleDTO);
-        Assert.assertThat("A calculation is made only if there is an instance",printer.showChange(receipt),
-                CoreMatchers.isA(Receipt.class));
     }
 }

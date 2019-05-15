@@ -13,7 +13,7 @@ public class InvalidIDException extends java.lang.Exception {
      *                                              with the id number.
      *
      * */
-    public InvalidIDException(String itemID){
+     InvalidIDException(String itemID){
         super("The Item Id: "+ itemID +" cannot be found");
        this.noItemFound = itemID;
     }

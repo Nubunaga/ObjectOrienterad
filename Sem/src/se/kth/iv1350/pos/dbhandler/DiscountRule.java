@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class DiscountRule implements Matcher {
 
     private DiscountDb discountDb;
+    private Matcher strategy;
 
     /**
     *Constructor for the <code> DiscountRule </code> object
@@ -45,7 +46,7 @@ public class DiscountRule implements Matcher {
 
             return discount;
 
-        } catch (Exception e) {
+        } catch (ConnectionFailureException e) {
             System.out.println("Lost connection to Discount Db");
         }
         return 0;
@@ -93,7 +94,7 @@ public class DiscountRule implements Matcher {
     *
     * @return <code> discountDb </code>.
     * */
-    public DiscountDb getDiscountDb() {
+     DiscountDb getDiscountDb() {
         return discountDb;
     }
 
