@@ -1,4 +1,5 @@
 /**Test Db for Inventory
+ *  this is a singleton made class.
 * @ Author: Netanel Avraham Eklind*/
 
 package se.kth.iv1350.pos.database;
@@ -9,10 +10,24 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class InventoryDb   {
-    ArrayList<Item> inventoryList;       // create a list to use
+    private ArrayList<Item> inventoryList;       // create a list to use
+    private static InventoryDb single_instance = null;
     /**Constructor*/
-    public InventoryDb(){
+    private InventoryDb()throws Exception{
     this.inventoryList = new ArrayList<Item>();
+        database();
+    }
+
+
+    /**
+     * This get the one and only instance made by this object.
+     * @return an instance of the object <code>{@link InventoryDb}</code>.
+     * */
+    public static InventoryDb getInstance()throws Exception{
+        if(single_instance == null){
+            single_instance = new InventoryDb();
+        }
+        return single_instance;
     }
 
     /**Create "new" database with different items to find

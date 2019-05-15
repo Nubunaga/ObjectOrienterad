@@ -18,17 +18,20 @@ import se.kth.iv1350.pos.view.View;
 
 
 public class ControllerTest {
-    private InventoryDb inventoryDb = new InventoryDb();
+    private InventoryDb inventoryDb =InventoryDb.getInstance();
     private Inventory inventory;
     private Register register;
     private Controller controller;
     private View view;
 
+    public ControllerTest() throws Exception {
+    }
+
     @Before
     /**At the startup of the test program, create the necessary object and use them to test the controller class. */
     public void setUp() throws Exception {
     inventory = new Inventory(inventoryDb);
-    register = new Register(inventory,new ExternalAccountingSystem());
+    register = new Register(inventory,ExternalAccountingSystem.getInstance());
     controller = new Controller(inventory,register);
     view = new View(controller);
     }
@@ -72,8 +75,8 @@ public class ControllerTest {
         try {
             controller.addItem("1337", 1);
         }
-        catch (ConnectionFailureException e){
-            Assert.assertTrue("There is no good handling of crash",e.getMessage().equals("There is no connection to database"));
+        catch (DataConnectionFaliureException e){
+            Assert.assertTrue("There is no good handling of crash",e.getMessage().equals("Lost connection to server, try again"));
         } catch (InvalidIDException e) {
             Assert.fail("This is the wrong throw");
         }

@@ -1,0 +1,8 @@
+15 maj 2019 13:57:42
+, Exception has been thrown: There is no connection to database
+se.kth.iv1350.pos.dbhandler.ConnectionFailureException: There is no connection to database
+	at se.kth.iv1350.pos.dbhandler.Inventory.checkValidation(Inventory.java:37)
+	at se.kth.iv1350.pos.controller.Controller.addItem(Controller.java:61)
+	at se.kth.iv1350.pos.view.View.addItem(View.java:100)
+	at se.kth.iv1350.pos.view.View.runFakeSale(View.java:64)
+	at se.kth.iv1350.pos.startUp.Main.main(Main.java:28)

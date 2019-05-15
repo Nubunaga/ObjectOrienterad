@@ -6,7 +6,7 @@ import se.kth.iv1350.pos.model.SaleDTO;
 import se.kth.iv1350.pos.database.DiscountDb;
 import java.util.ArrayList;
 
-public class DiscountRule {
+public class DiscountRule implements Matcher {
 
     private DiscountDb discountDb;
 
@@ -14,8 +14,7 @@ public class DiscountRule {
     *Constructor for the <code> DiscountRule </code> object
     **/
     public DiscountRule() {
-        this.discountDb = new DiscountDb();
-
+        this.discountDb = DiscountDb.getInstance();
     }
     /**
     * The method <code> calculateDiscount </code> calculates a new price following different discount rules provided by
@@ -32,22 +31,20 @@ public class DiscountRule {
     * @return if a new discount is checked at <code>  if ( discountRunningTotal(logs,costumerId) ) </code>
     * discount returns a float that is used to calculate new runningTotal thus calculating total cost.
     **/
+
+
     public float calculateDiscount(ArrayList<ItemDTO> sale, SaleDTO logs, String costumerId) {
         try {
             float discount = 1;
-            for (ItemDTO check : sale) {
-                if ( discountItemID(check) ) {
-                discount -= 0.01;
-                }
-                if ( discountQuantity(check) ){
-
-                    discount -= .02f;
-                }
+            if(discountRunningTotal(logs,costumerId)) {
+                discount = calculateWithID(sale, costumerId);
             }
-                if ( discountRunningTotal(logs,costumerId) ) {
-                    discount -= 0.3f;
-                    return discount;
-                }
+            else{
+                discount = calculateWithoutID(sale);
+            }
+
+            return discount;
+
         } catch (Exception e) {
             System.out.println("Lost connection to Discount Db");
         }
@@ -98,5 +95,31 @@ public class DiscountRule {
     * */
     public DiscountDb getDiscountDb() {
         return discountDb;
+    }
+
+    @Override
+    public float calculateWithID(ArrayList<ItemDTO> sale, String costumerID) {
+        float discount = 1;
+        for (ItemDTO check : sale) {
+            if ( discountItemID(check) ) {
+                discount -= 0.04;
+            }
+            if ( discountQuantity(check) ){
+
+                discount -= .04f;
+            }
+        }
+            return discount;
+    }
+
+    @Override
+    public float calculateWithoutID(ArrayList<ItemDTO> sale) {
+        float discount = 1;
+        for (ItemDTO check : sale) {
+            if (discountItemID(check)) {
+                discount -= 0.21f;
+            }
+        }
+            return discount;
     }
 }

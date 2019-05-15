@@ -20,7 +20,7 @@ public class InventoryTest {
 
     @Before
     public void setUp() throws Exception {
-        inventory = new Inventory(new InventoryDb());
+        inventory = new Inventory(InventoryDb.getInstance());
         inventory.getInventoryDb().database();
     }
 

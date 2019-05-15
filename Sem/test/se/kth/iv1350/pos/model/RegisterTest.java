@@ -17,7 +17,6 @@ import se.kth.iv1350.pos.dbhandler.ItemDTO;
 
 import java.util.ArrayList;
 
-
 public class RegisterTest {
     Register register;
     Calculator calculator;
@@ -25,7 +24,7 @@ public class RegisterTest {
 
     @Before
     public void setUp() throws Exception {
-    register = new Register(new Inventory(new InventoryDb()),new ExternalAccountingSystem());
+    register = new Register(new Inventory(InventoryDb.getInstance()),ExternalAccountingSystem.getInstance());
     calculator = new Calculator();
     }
 
@@ -50,7 +49,6 @@ public class RegisterTest {
     public void testEmptyReceipt(){
 
         TotalSaleDTO  instance = new TotalSaleDTO(new SaleDTO(new ArrayList<>(),0),0,new CashPayment(100));
-        boolean check = false;
         Assert.assertNotNull("There is no item here ",instance);
     }
 

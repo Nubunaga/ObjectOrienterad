@@ -7,7 +7,9 @@ package se.kth.iv1350.pos.controller;
 /** import packages that are in association to this package*/
 import se.kth.iv1350.pos.dbhandler.*;
 import se.kth.iv1350.pos.model.*;
+import se.kth.iv1350.pos.util.ErrorLogHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Controller {
     private Sale sale;
     private Register register;
     private List<RevenueObserver> revenueObserversList = new ArrayList<>();
+    private ErrorLogHandler errorLogHandler;
     /**a blank constructor if only the class wants to be accessed.*/
     public Controller(){
 
@@ -26,10 +29,12 @@ public class Controller {
      *                    inventory and inventory db
      *
      * @param register  contains register
+     * @throws IOException  is thrown if the IO fails.
     */
-    public Controller(Inventory inventory,Register register){
+    public Controller(Inventory inventory,Register register) throws IOException {
     this.inventory = inventory;
     this.register = register;
+    this.errorLogHandler = new ErrorLogHandler();
     }
 
     /**
@@ -52,8 +57,14 @@ public class Controller {
      * @throws InvalidIDException           checked <code>Exception</code> that is thrown if no item found.
     * */
     public SaleDTO addItem(String itemID, int quantity)throws InvalidIDException {
+        try {
         ItemDTO item = inventory.checkValidation(itemID,quantity);
         return sale.addToSale(item);
+        }
+        catch (ConnectionFailureException exc){
+                errorLogHandler.logError(exc);
+                throw new DataConnectionFaliureException();
+        }
     }
 
     /**
@@ -69,6 +80,7 @@ public class Controller {
     /**
     * Method <code> addPayment </code> takes input from the view class and creates a object as payment, that is used
     * to create a total sale DTO that contains all information about the current sale.
+     * The program also notifies the observer.
     *
     * @param amountPaid pay and applies it to a new object, this is then used in <code> new CashPayment(pay) </code>.
     *
@@ -106,7 +118,10 @@ public class Controller {
     Sale getSale() {
         return sale;
     }
-
+    /**
+     * Adds a new <code>Observer</code> to the <code> revenueObserversList</code>.
+     * @param revenueObserver       contains the class that is to implement observer.
+     * */
     public void addRevenueObserver(RevenueObserver revenueObserver){
         revenueObserversList.add(revenueObserver);
     }

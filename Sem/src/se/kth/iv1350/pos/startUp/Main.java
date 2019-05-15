@@ -19,11 +19,8 @@ public class Main {
      * @param args is the starting comment if one want to run with one.
      * @throws Exception is to run the database and view that handle exception.*/
     public static void main(String[] args)throws Exception{
-
-        new DiscountDb();
-        InventoryDb db = new InventoryDb();
-        db.database();
-        ExternalAccountingSystem exAccSys = new ExternalAccountingSystem();
+        InventoryDb db = InventoryDb.getInstance();
+        ExternalAccountingSystem exAccSys = ExternalAccountingSystem.getInstance();
         Inventory inv = new Inventory(db);
         Register reg = new Register(inv,exAccSys);
         Controller controller = new Controller(inv,reg);

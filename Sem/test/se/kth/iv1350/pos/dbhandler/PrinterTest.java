@@ -15,11 +15,17 @@ import se.kth.iv1350.pos.model.*;
 public class PrinterTest {
     private Printer printer;
    private Register register;
+   private Inventory inventory;
+   private InventoryDb inventoryDb;
+   private ExternalAccountingSystem externalAccountingSystem;
 
     @Before
     public void setUp() throws Exception {
         printer = new Printer();
-        register = new Register(new Inventory(new InventoryDb()),new ExternalAccountingSystem());
+        inventoryDb = InventoryDb.getInstance();
+        inventory = new Inventory(inventoryDb);
+        externalAccountingSystem = ExternalAccountingSystem.getInstance();
+        register = new Register(inventory,externalAccountingSystem);
     }
 
     @After

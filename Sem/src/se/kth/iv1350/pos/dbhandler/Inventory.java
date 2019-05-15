@@ -9,8 +9,9 @@ import se.kth.iv1350.pos.model.TotalSaleDTO;
 import se.kth.iv1350.pos.database.InventoryDb;
 
 
-public class Inventory {
+public class Inventory{
      private InventoryDb inventoryDb;
+     private String argString[];
         /**
         * Constructor for the inventory object.
          * @param  inventoryDb is the database for items.
@@ -20,9 +21,7 @@ public class Inventory {
     }
 
     /**
-    * The method looks through the entire "database" for the specific item with the given item id.
-    * This is done by implementing a <code> for (Item checker : inventoryDb.getInventoryList()) </code> that
-    * looks through the database for that item.
+    *   This updated method now receives the parameters and send them to a mather for validation.
      *
     * @param itemID is a <code> String </code> with information about the searched for item in the system.
     *
@@ -37,13 +36,13 @@ public class Inventory {
         if (itemID.equals("1337")){
                 throw  new ConnectionFailureException();
         }
-            for (Item checker : inventoryDb.getInventoryList()) {
-                if (itemID.equals(checker.getItemID())) {
-                    return new ItemDTO(checker.getPrice(), checker.getName(),
-                            checker.getItemID(), checker.getVatRate(), quantity);
-                }
+        for (Item checker : inventoryDb.getInventoryList()) {
+            if (itemID.equals(checker.getItemID())) {
+                return new ItemDTO(checker.getPrice(), checker.getName(),
+                        checker.getItemID(), checker.getVatRate(), quantity);
             }
-        throw new  InvalidIDException(itemID);
+        }
+        throw new InvalidIDException(itemID);
     }
 
     /**

@@ -7,11 +7,13 @@ output as return. This is to keep a good structure and handling for the programm
 package se.kth.iv1350.pos.view;
 // packages that are associated to se.kth.iv1350.pos.view package.
 import se.kth.iv1350.pos.controller.Controller;
+import se.kth.iv1350.pos.controller.DataConnectionFaliureException;
 import se.kth.iv1350.pos.dbhandler.ConnectionFailureException;
 import se.kth.iv1350.pos.dbhandler.InvalidIDException;
 import se.kth.iv1350.pos.dbhandler.Item;
 import se.kth.iv1350.pos.model.Receipt;
 import se.kth.iv1350.pos.model.SaleDTO;
+import se.kth.iv1350.pos.util.ErrorLogHandler;
 
 // utility and io classes that are used in this class
 import java.io.IOException;
@@ -97,7 +99,7 @@ public class View  {
             try {
                 SaleDTO saleInfo = controller.addItem(itemID, in.nextInt());
                 System.out.println("" + saleInfo);
-            } catch (InvalidIDException | ConnectionFailureException e) {
+            } catch (InvalidIDException | DataConnectionFaliureException e) {
                 handleException(e);
             }
         }
@@ -141,6 +143,5 @@ public class View  {
      * */
     private void handleException(Exception exc){
         errorMessageHandler.printMessage(exc.getMessage());
-        errorLogHandler.logError(exc);
     }
 }
