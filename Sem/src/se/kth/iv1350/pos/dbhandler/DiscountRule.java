@@ -18,8 +18,7 @@ public class DiscountRule{
         this.discountDb = DiscountDb.getInstance();
     }
     /**
-    * The method <code> calculateDiscount </code> calculates a new price following different discount rules provided by
-    * a external database.
+    * The method is used to chose a strategy and then call the right algorithm for the discount.
     *
     * @param sale, is a <code> ArrayList </code> that contains the
     *  current sale.
