@@ -2,14 +2,14 @@
 * @ Author Netanel Avraham Eklind */
 package se.kth.iv1350.pos.dbhandler;
 // import packages associated with this class
-import se.kth.iv1350.pos.model.SaleDTO;
 import se.kth.iv1350.pos.database.DiscountDb;
+
 import java.util.ArrayList;
 
-public class DiscountRule implements Matcher {
+public class DiscountRule{
 
     private DiscountDb discountDb;
-    private Matcher strategy;
+    private String strategy;
 
     /**
     *Constructor for the <code> DiscountRule </code> object
@@ -24,9 +24,6 @@ public class DiscountRule implements Matcher {
     * @param sale, is a <code> ArrayList </code> that contains the
     *  current sale.
     *
-    * @param logs, is a log of all the sale in the current sale that is used
-    * to calculate the running total discount rule.
-    *
     * @param costumerId, is a string of the costumers id that is used to check for the costumer in the data base.
     *
     * @return if a new discount is checked at <code>  if ( discountRunningTotal(logs,costumerId) ) </code>
@@ -34,59 +31,30 @@ public class DiscountRule implements Matcher {
     **/
 
 
-    public float calculateDiscount(ArrayList<ItemDTO> sale, SaleDTO logs, String costumerId) {
+    public float calculateDiscount(ArrayList<ItemDTO> sale, String costumerId) {
         try {
-            float discount = 1;
-            if(discountRunningTotal(logs,costumerId)) {
-                discount = calculateWithID(sale, costumerId);
+            this.strategy = costumerId;
+            if(discountStrategy()) {
+                return new WithCorrectID().calculateDiscount(sale,this.discountDb);
             }
             else{
-                discount = calculateWithoutID(sale);
+                return new WithoutCorrectID().calculateDiscount(sale,this.discountDb);
             }
-
-            return discount;
 
         } catch (ConnectionFailureException e) {
             System.out.println("Lost connection to Discount Db");
         }
         return 0;
     }
-
     /**
-    * This method is used to check the item id for discount rule, item id.
+    * This method is used to check for discount rule,costumer id and then chose the
+     * correct strategy.
     *
-    * @param check contains the current <code> ItemDTO </code> in the array list
-    * and checks the item id for a match.
-    *
-    * @return true if a match is found
+    * @return true if <code> costumerId.equals( discountDb.getCostumerID() </code>
+     * is true.
     * */
-    private boolean discountItemID(ItemDTO check){
-        return check.getItemID().equals( this.discountDb.getItemId() );
-    }
-
-    /**
-    * This method is used to check for discount rules item id and item quantity.
-    *
-    * @param check contains current <code> ItemDTO </code> in the array list.
-    *
-    * @return true if and only if both <code> check.getItemID().equals( discountDb.getItemId() </code>
-    * and <code> check.getQuantity() == this.discountDb.getQuantity() </code> is correct.
-    * */
-    private boolean discountQuantity (ItemDTO check){
-        return ( check.getItemID().equals( discountDb.getItemId() ) && check.getQuantity() == this.discountDb.getQuantity() );
-    }
-    /**
-    * This method is used to check for discount rule, running total and costumer id.
-    *
-    * @param logs contains the current sale log with all <code> ItemDTO </code> that is in the sale.
-    *
-    * @param costumerId is a <code> String </code> of the costumer id.
-    *
-    * @return true if either <code> logs.getRunningTotal() == discountDb.getReduction() </code> or
-    * <code> costumerId.equals( discountDb.getCostumerID() </code> is true.
-    * */
-    private boolean discountRunningTotal(SaleDTO logs,String costumerId){
-        return ( logs.getRunningTotal() == discountDb.getReduction() || costumerId.equals( discountDb.getCostumerID() ));
+    private boolean discountStrategy(){
+        return  this.strategy.equals( discountDb.getCostumerID());
     }
 
     /**
@@ -96,31 +64,5 @@ public class DiscountRule implements Matcher {
     * */
      DiscountDb getDiscountDb() {
         return discountDb;
-    }
-
-    @Override
-    public float calculateWithID(ArrayList<ItemDTO> sale, String costumerID) {
-        float discount = 1;
-        for (ItemDTO check : sale) {
-            if ( discountItemID(check) ) {
-                discount -= 0.04;
-            }
-            if ( discountQuantity(check) ){
-
-                discount -= .04f;
-            }
-        }
-            return discount;
-    }
-
-    @Override
-    public float calculateWithoutID(ArrayList<ItemDTO> sale) {
-        float discount = 1;
-        for (ItemDTO check : sale) {
-            if (discountItemID(check)) {
-                discount -= 0.21f;
-            }
-        }
-            return discount;
     }
 }

@@ -10,7 +10,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import se.kth.iv1350.pos.model.Sale;
-import se.kth.iv1350.pos.model.SaleDTO;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ public class DiscountRuleTest {
     /**Check DiscountRule 1, ItemId*/
     public void testDiscount1(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
-        discountRule.calculateDiscount(salelog, instanceOfSale(item),"abba");
+        discountRule.calculateDiscount(salelog,"abba");
         Assert.assertTrue("Same id",discountRule.getDiscountDb().getItemId().equals(item.getItemID()));
     }
 
@@ -45,17 +44,15 @@ public class DiscountRuleTest {
     /**Check DiscountRule 2, ItemId and quantity*/
     public void testDiscount2(){
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
-        discountRule.calculateDiscount(salelog, instanceOfSale(item),"abba");
+        discountRule.calculateDiscount(salelog,"abba");
         Assert.assertTrue("Same id",discountRule.getDiscountDb().getItemId().equals(item.getItemID())
         && discountRule.getDiscountDb().getQuantity() == item.getQuantity());
     }
     @Test
     /**Check DiscountRule 3, CostumerId*/
     public void testDiscount3(){
-        float discount = 1;
-        ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
-         discount = discountRule.calculateDiscount(salelog, instanceOfSale(item),"abba");
-        boolean instance = (1 >= discount)?true:false;
+        boolean instance = (1 >= discountRule.calculateDiscount(salelog,"abba")
+        )?true:false;
         Assert.assertTrue("there have been a discount",instance);
     }
     @Test
@@ -63,16 +60,9 @@ public class DiscountRuleTest {
     public void testDiscount4(){
         float discount = 1;
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
-        discount = discountRule.calculateDiscount(salelog, instanceOfSale(item),"sara");
+        discount = discountRule.calculateDiscount(salelog,"sara");
         boolean instance = (1 >= discount)?false:true;
         Assert.assertFalse("There has not been a discount",instance);
     }
-    /**This is used to be an instance to test
-     * @param item   contains a item DTO
-     * @return instance */
-    public SaleDTO instanceOfSale(ItemDTO item){
-        SaleDTO instance = sale.addToSale(item);
-        salelog.add(item);
-        return instance;
-    }
+
 }

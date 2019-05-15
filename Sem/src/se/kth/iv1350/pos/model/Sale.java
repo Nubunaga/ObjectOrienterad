@@ -55,7 +55,7 @@ public class Sale {
     * */
     public SaleDTO applySaleChange(String costumerID){
         SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,this.discount));
-        this.discount = dR.calculateDiscount(sale,logs,costumerID);
+        this.discount = dR.calculateDiscount(sale,costumerID);
         return new SaleDTO(sale,calc.runningTotal(sale,discount));
     }
 
