@@ -122,7 +122,7 @@ public class View  {
             clearScreen();
             System.out.println("" + change);
         } catch (Exception e) {
-            System.out.println("what!?");
+            System.out.println("Wrong input");
 
         }
     }
