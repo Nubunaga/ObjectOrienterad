@@ -470,11 +470,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JAR Application.Main" />
       <item itemvalue="JUnit.All in Sem" />
       <item itemvalue="JUnit.DiscountRuleTest" />
       <item itemvalue="JUnit.PrinterTest.testChangeCalculation" />
       <item itemvalue="JUnit.RegisterTest.testReceipt" />
+      <item itemvalue="JAR Application.Main" />
     </list>
     <recent_temporary>
       <list>
