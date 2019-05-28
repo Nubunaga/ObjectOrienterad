@@ -73,7 +73,7 @@ public class Controller {
     * @param costumerID will be sent as an argument to method <code>sale.applySaleChange()</code>.
     * @return will be of the new sale information as an new object of SaleDTO that will be shown to the costumer.
     */
-    public SaleDTO enterCostumerID(String costumerID){
+    public SaleDTO enterCostumerID(String costumerID)throws Exception{
         return sale.applySaleChange(costumerID);
     }
 

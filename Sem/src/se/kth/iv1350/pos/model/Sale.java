@@ -53,8 +53,7 @@ public class Sale {
     *
     * @return the new sale information after calculation.
     * */
-    public SaleDTO applySaleChange(String costumerID){
-        SaleDTO logs = new SaleDTO(sale,calc.runningTotal(sale,this.discount));
+    public SaleDTO applySaleChange(String costumerID)throws Exception{
         this.discount = dR.calculateDiscount(sale,costumerID);
         return new SaleDTO(sale,calc.runningTotal(sale,discount));
     }

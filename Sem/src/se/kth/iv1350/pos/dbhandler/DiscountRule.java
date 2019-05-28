@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DiscountRule{
 
     private DiscountDb discountDb;
-    private String strategy;
+    private DiscountCalculator strategy;
 
     /**
     *Constructor for the <code> DiscountRule </code> object
@@ -30,16 +30,10 @@ public class DiscountRule{
     **/
 
 
-    public float calculateDiscount(ArrayList<ItemDTO> sale, String costumerId) {
+    public float calculateDiscount(ArrayList<ItemDTO> sale, String costumerId)throws Exception {
         try {
-            this.strategy = costumerId;
-            if(discountStrategy()) {
-                return new WithCorrectID().calculateDiscount(sale,this.discountDb);
-            }
-            else{
-                return new WithoutCorrectID().calculateDiscount(sale,this.discountDb);
-            }
-
+            this.strategy = new DiscountFactory(this.discountDb).choseStrategy(costumerId);
+            return this.strategy.calculateDiscount(sale,this.discountDb);
         } catch (ConnectionFailureException e) {
             System.out.println("Lost connection to Discount Db");
         }

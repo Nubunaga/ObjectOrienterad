@@ -12,13 +12,12 @@ import java.util.ArrayList;
 public class InventoryDb   {
     private ArrayList<Item> inventoryList;       // create a list to use
     private static InventoryDb single_instance = null;
+
     /**Constructor*/
     private InventoryDb()throws Exception{
     this.inventoryList = new ArrayList<Item>();
         database();
     }
-
-
     /**
      * This get the one and only instance made by this object.
      * @return an instance of the object <code>{@link InventoryDb}</code>.
@@ -32,7 +31,7 @@ public class InventoryDb   {
 
     /**Create "new" database with different items to find
      * @throws Exception to print the file, this is thrown*/
-    public void database() throws Exception{
+    private void database() throws Exception{
         inventoryList.add(new Item(23.50f,"Milk","3536", 0.12f,10));
         inventoryList.add(new Item(24.95f,"Butter","3537", 0.12f,15));
         inventoryList.add(new Item(19.95f,"Bread","3538", 0.12f,10));

@@ -91,7 +91,7 @@ public class ControllerTest {
 
     @Test
     /**Check if the discount updates the current sale,with correct costumer id*/
-    public void testCostumerID()throws InvalidIDException{
+    public void testCostumerID()throws Exception{
        SaleDTO test = addSaleInstance();
         Assert.assertNotSame(test.getRunningTotal()
                 ,controller.enterCostumerID("abba").getRunningTotal());
@@ -99,7 +99,7 @@ public class ControllerTest {
     }
     @Test
     /**test if the discount updates the current sale with wrong costumer id.*/
-    public void testWrongCostumerID()throws InvalidIDException{
+    public void testWrongCostumerID()throws Exception{
         addSaleInstance();
        SaleDTO testAfterDiscount = controller.enterCostumerID("abba");
        SaleDTO testWrongID = controller.enterCostumerID("sara");

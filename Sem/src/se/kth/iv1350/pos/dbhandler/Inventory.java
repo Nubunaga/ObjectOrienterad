@@ -11,7 +11,6 @@ import se.kth.iv1350.pos.database.InventoryDb;
 
 public class Inventory{
      private InventoryDb inventoryDb;
-     private String argString[];
         /**
         * Constructor for the inventory object.
          * @param  inventoryDb is the database for items.

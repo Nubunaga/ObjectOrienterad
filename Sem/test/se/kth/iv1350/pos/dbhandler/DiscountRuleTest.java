@@ -34,7 +34,7 @@ public class DiscountRuleTest {
 
     @Test
     /**Check DiscountRule 1, ItemId*/
-    public void testDiscount1(){
+    public void testDiscount1()throws Exception{
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
         discountRule.calculateDiscount(salelog,"abba");
         Assert.assertTrue("Same id",discountRule.getDiscountDb().getItemId().equals(item.getItemID()));
@@ -42,7 +42,7 @@ public class DiscountRuleTest {
 
     @Test
     /**Check DiscountRule 2, ItemId and quantity*/
-    public void testDiscount2(){
+    public void testDiscount2()throws Exception{
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
         discountRule.calculateDiscount(salelog,"abba");
         Assert.assertTrue("Same id",discountRule.getDiscountDb().getItemId().equals(item.getItemID())
@@ -50,14 +50,14 @@ public class DiscountRuleTest {
     }
     @Test
     /**Check DiscountRule 3, CostumerId*/
-    public void testDiscount3(){
+    public void testDiscount3()throws Exception{
         boolean instance = (1 >= discountRule.calculateDiscount(salelog,"abba")
         )?true:false;
         Assert.assertTrue("there have been a discount",instance);
     }
     @Test
     /**Check DiscountRule 3, costumerIDFail*/
-    public void testDiscount4(){
+    public void testDiscount4()throws Exception{
         float discount = 1;
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,3);
         discount = discountRule.calculateDiscount(salelog,"sara");

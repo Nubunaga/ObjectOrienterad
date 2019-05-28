@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class WithCorrectID implements DiscountCalculator {
     private DiscountDb discountDb;
-    public WithCorrectID(){
+     WithCorrectID(){
     }
 
     @Override

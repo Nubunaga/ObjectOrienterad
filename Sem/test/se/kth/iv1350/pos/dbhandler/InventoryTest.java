@@ -21,7 +21,7 @@ public class InventoryTest {
     @Before
     public void setUp() throws Exception {
         inventory = new Inventory(InventoryDb.getInstance());
-        inventory.getInventoryDb().database();
+        inventory.getInventoryDb();
     }
 
     @After

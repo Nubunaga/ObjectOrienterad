@@ -84,7 +84,7 @@ public class SaleTest {
 
     @Test
     /**Test discount applying*/
-    public void testSaleChange(){
+    public void testSaleChange()throws Exception{
         ItemDTO item = new ItemDTO(23.5f,"Milk","3536",0.12f,1);
         SaleDTO normalSale = sale.addToSale(item);
         SaleDTO discountSale = sale.applySaleChange("abba");

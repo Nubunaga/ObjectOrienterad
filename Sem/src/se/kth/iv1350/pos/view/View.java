@@ -45,7 +45,7 @@ public class View  {
      * @throws IOException          that is an input output exception
      * @throws InterruptedException that is handled when and interruption is done.
      */
-    public void runFakeSale() throws IOException, InterruptedException {
+    public void runFakeSale() throws Exception,IOException, InterruptedException {
         for (; ;) {
 
             System.out.println("Enter command");
@@ -105,7 +105,7 @@ public class View  {
      * input at <code> SaleDTO newSale = controller.enterCostumerID(in.next()) </code> for the costumer id in string form.
      * This will then send this information to check the discount rules if this is applicable.
      */
-    private void addDiscount() {
+    private void addDiscount()throws Exception{
         System.out.println("Enter costumer id: ");
         SaleDTO newSale = controller.enterCostumerID(in.next());
         System.out.println("" + newSale);
